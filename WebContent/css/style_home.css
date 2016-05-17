@@ -4,9 +4,10 @@
 	width:100%;
 	background: #50a3a2;
 	top:30px;
-	-moz-box-shadow:5px 5px 2px #333333;
-    -webkit-box-shadow:5px 5px 2px #333333;
-    box-shadow:5px 5px 2px #333333
+	-moz-box-shadow:2px 2px 1px #165346;
+    -webkit-box-shadow:2px 2px 1px  #165346;
+    box-shadow:2px 2px 1px  #165346;
+    z-index: 4;
 }
 #searchBox{
 	position: absolute;
@@ -285,62 +286,23 @@ body :-ms-input-placeholder {
 	animation-delay: 11s;
 }
 
-@
--webkit-keyframes square { 0% {
-	-webkit-transform: translateY(0);
-	transform: translateY(0);
+@-webkit-keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-900px) rotate(600deg);
+            transform: translateY(-900px) rotate(600deg);
+  }
 }
-
-100%
-{
--webkit-transform
-:
- 
-translateY
-(-900px)
- 
-rotate
-(600deg);
-
-            
-transform
-:
- 
-translateY
-(-900px)
- 
-rotate
-(600deg);
-
-  
-}
-}
-@
-keyframes square { 0% {
-	-webkit-transform: translateY(0);
-	transform: translateY(0);
-}
-100%
-{
--webkit-transform
-:
- 
-translateY
-(-900px)
- 
-rotate
-(600deg);
-
-            
-transform
-:
- 
-translateY
-(-900px)
- 
-rotate
-(600deg);
-
-  
-}
+@keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-900px) rotate(600deg);
+            transform: translateY(-900px) rotate(600deg);
+  }
 }
