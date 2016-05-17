@@ -1,5 +1,6 @@
 package it.uniroma3.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -69,6 +70,7 @@ public class TutoDao implements DAO<Tuto>{
 		return result;
 	}
 
+	/*
 	@Override
 	public List<Tuto> findByParameter(String parameter1, String column1, String parameter2, String column2) {
 		EntityManager em = emf.createEntityManager();
@@ -99,5 +101,30 @@ public class TutoDao implements DAO<Tuto>{
 		em.close();
 		
 		return list;
+	}
+	*/
+	
+	public List<Tuto> findTutoByUtente(Utente utente){
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();	
+		
+		Query query = em.createQuery("from Tuto t where t.utente_id=:p");
+		query.setParameter("p", utente.getId());
+		List<Tuto> listaTuto = query.getResultList();
+				
+		em.close();		
+		return listaTuto;
+	}
+	
+	public List<Tuto> findTutoByCategoria(Categoria categoria){
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();	
+		
+		Query query = em.createQuery("from Categoria c where c.categoria_id=:p");
+		query.setParameter("p", categoria.getId());
+		List<Tuto> categorie = query.getResultList();
+				
+		em.close();		
+		return categorie;
 	}
 }

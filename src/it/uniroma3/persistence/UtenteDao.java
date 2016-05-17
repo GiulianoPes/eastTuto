@@ -70,6 +70,7 @@ public class UtenteDao implements DAO<Utente>{
 		return result;
 	}
 
+	/*
 	@Override
 	public List<Utente> findByParameter(String parameter1, String column1, String parameter2, String column2) {
 		EntityManager em = emf.createEntityManager();
@@ -85,7 +86,7 @@ public class UtenteDao implements DAO<Utente>{
 		query.setParameter(4, column1); 
 		query.setParameter(3, parameter1); 
 		query.setParameter(2, column2); 
-		query.setParameter(1, parameter2); */
+		query.setParameter(1, parameter2);
 	
 		List<Utente> list = query.getResultList();
 		
@@ -93,6 +94,7 @@ public class UtenteDao implements DAO<Utente>{
 		
 		return list;
 	}
+	
 
 	@Override
 	public List<Utente> findByParameter(String parameter, String column) {
@@ -108,6 +110,7 @@ public class UtenteDao implements DAO<Utente>{
 		
 		return list;
 	}
+	*/
 	
 	public Utente findByCredentials(String username, String password){
 		Utente utente = null;

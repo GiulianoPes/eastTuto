@@ -67,7 +67,7 @@ public class CategoriaDao implements DAO<Categoria>{
 		em.close();
 		return result;
 	}
-
+	/*
 	@Override
 	public List<Categoria> findByParameter(String parameter1, String column1, String parameter2, String column2) {
 		EntityManager em = emf.createEntityManager();
@@ -99,5 +99,6 @@ public class CategoriaDao implements DAO<Categoria>{
 		
 		return list;
 	}
+	*/
 
 }
