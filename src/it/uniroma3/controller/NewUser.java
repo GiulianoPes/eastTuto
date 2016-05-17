@@ -27,7 +27,7 @@ public class NewUser extends HttpServlet{
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("users-unit");
-		DAO utenteDao = new UtenteDao(emf);
+		UtenteDao utenteDao = new UtenteDao(emf);
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -36,9 +36,9 @@ public class NewUser extends HttpServlet{
 		utenteDao.save(utente);		
 		
 		//Si logga direttamente
-		List<Utente> listaUtente = utenteDao.findByParameter(username,"username",password,"password");
+		Utente u = utenteDao.findByCredentials(username, password);
 		HttpSession session = request.getSession();
-		session.setAttribute("Utente", listaUtente.get(0));
+		session.setAttribute("Utente", u);
 		request.setAttribute("Dialog", new Dialog("Login effettuato"));
 		
 		request.setAttribute("Utente", utente);
