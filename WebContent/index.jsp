@@ -34,72 +34,74 @@
 
 		<div id="header">
 			<center>
-				<h1 style="position: absolute; top: 5px;">easyTuto</h1>
-
-
-				<div id="searchBox">
-					<form class="profileBoxForm" action="search">
-						<table>
-							<tr>
-								<td><input id="searchBar" type="text" name="searchValure"></td>
-								<td><input class="profileBoxFormInput"
-									style="height: 40px;" type="submit" value="cerca"></td>
-							</tr>
-						</table>
-					</form>
-				</div>
-			</center>
-			<%
-				if (utente == null) {
-			%>
-			<div id="userProfileBox">
-				<table>
+				<table style="width: 100%;">
+					<col width="20%">
+					<col width="50%">
+					<col width="30%">
 					<tr>
+						<td style="text-align:left; padding-left: 25px;"><h1>easyTuto</h1></td>
 						<td>
-							<form class="profileBoxForm" action="login.jsp">
-								<input class="profileBoxFormInput" type="submit" value="Login">
-							</form>
-						</td>
-
-						<td>
-							<form class="profileBoxForm" action="register.jsp">
-								<input class="profileBoxFormInput" type="submit"
-									value="Registrati">
-							</form>
-						</td>
-					</tr>
-				</table>
-			</div>
-
-
-			<%
-				} else {
-			%>
-			<div id="userProfileBox">
-				<table>
-					<tr>
-						<td>
-							<div style="postion: absolute;">
-								<%="ciao " + utente.getUsername()%>
+							<div id="searchBox">
+								<form class="profileBoxForm" action="search">
+									<table>
+										<tr>
+											<td><input id="searchBar" type="text" name="searchValure"></td>
+											<td><input class="profileBoxFormInput" type="button" value="cerca"></td>
+										</tr>
+									</table>
+								</form>
 							</div>
 						</td>
-						<td>
-							<form class="profileBoxForm" action="logoutUser" method="post">
-								<input class="profileBoxFormInput" type="submit" value="logout">
-							</form>
-						</td>
-						<td>
-							<form class="profileBoxForm" >
-								<input class="profileBoxFormInput" type="button" value="MyTuto" id="myTuto">
-							</form>
+						<td style="text-align:right;">
+							<% if (utente == null) { %>
+							<div id="userProfileBox">
+								<table>
+									<tr>
+										<td style="text-align: right;">
+											<form class="profileBoxForm" action="login.jsp">
+												<input class="profileBoxFormInput" type="submit" value="Login">
+											</form>
+										</td>
+					
+										<td style="text-align: right;">
+											<form class="profileBoxForm" action="register.jsp">
+												<input class="profileBoxFormInput" type="submit"
+													value="Registrati">
+											</form>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<% } else { %>
+							<div id="userProfileBox">
+								<table>
+									<tr>
+										<td style="text-align: right;">
+											<div style="postion: absolute;">
+												<%="ciao " + utente.getUsername()%>
+											</div>
+										</td>
+										<td style="text-align: right;">
+											<form class="profileBoxForm" action="logoutUser" method="post">
+												<input class="profileBoxFormInput" type="submit" value="logout">
+											</form>
+										</td>
+										<td style="text-align: right;">
+											<form class="profileBoxForm" >
+												<input class="profileBoxFormInput" type="button" value="MyTuto" id="myTuto">
+											</form>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<% } %>
 						</td>
 					</tr>
 				</table>
-			</div>
-			<%
-				}
-			%>
-		</div>
+			</center>
+		</div><!-- chiusura header -->
+		
+		
 		<div class="container"></div>
 	</div>
 	<script src="js/index.js"></script>
