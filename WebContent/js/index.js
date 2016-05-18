@@ -10,9 +10,10 @@ $('body').ready(function(){
 		$('.wrapper').addClass('form-success');
 	});	
 	
-	$.ajax({url: "homeContent.jsp", success: function(result){
+	$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
         $(".container").html(result);
     }});
+
 
 
 });

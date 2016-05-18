@@ -36,13 +36,4 @@
 	</table>
 </div>
 <div class="box" id="lastTuto">
-
-	<table>
-		<tr>
-		</tr>
-		<tr>	
-		</tr>
-	</table>
-
-
 </div>

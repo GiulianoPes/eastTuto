@@ -116,6 +116,20 @@ public class TutoDao implements DAO<Tuto>{
 		return listaTuto;
 	}
 	
+	public List<Tuto> lastTuto(){
+		List<Tuto> lastTuto=null;
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();	
+		
+		Query query = em.createQuery("from Tuto t ORDER BY t.dataCreazione DESC");
+		lastTuto = query.getResultList();
+				
+		em.close();		
+		
+		
+		return lastTuto;
+	}
+	
 	public List<Tuto> findTutoByCategoria(Categoria categoria){
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();	
