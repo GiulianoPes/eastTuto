@@ -44,6 +44,12 @@ public class AddTuto extends HttpServlet {
 		tuto.setCategoria(categoria);
 		tuto.setUtente(utente);
 		
+		
+		utente.addTuto(tuto);
+		//session.setAttribute("Utente", utente);
+		
+		
+		
 		//Salvo il tutto nel Db
 		tutoDao.update(tuto);		
 		

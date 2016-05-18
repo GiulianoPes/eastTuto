@@ -27,16 +27,18 @@ public class ViewMyTuto extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("users-unit");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("users-unit");
 		HttpSession session = request.getSession();
 		
+		/*
 		Utente utente = (Utente)session.getAttribute("Utente");
 		
 		TutoDao tutoDao = new TutoDao(emf);
 		List<Tuto> listaTuto = tutoDao.findTutoByUtente(utente);
 		request.setAttribute("listaTuto", listaTuto);
+		*/
 		
 		String nextPage = "/myTuto.jsp";
 		ServletContext application = getServletContext();		
