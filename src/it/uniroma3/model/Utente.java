@@ -28,14 +28,10 @@ public class Utente {
 	@OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
     @JoinColumn(name = "utente_id")
 	private List<Tuto> tuto;
-	
-	public List<Tuto> getTuto() {
-		return tuto;
-	}
 
-	public void setTuto(List<Tuto> tuto) {
-		this.tuto = tuto;
-	}
+	@OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
+    @JoinColumn(name = "utente_id")
+	private List<Categoria> categorie;
 
 	public Utente(){
 		this.tuto = new ArrayList<>();
@@ -68,5 +64,13 @@ public class Utente {
 	
 	public void addTuto(Tuto tuto){
 		this.tuto.add(tuto);
-	}	
+	}
+	
+	public List<Tuto> getTuto() {
+		return tuto;
+	}
+
+	public void setTuto(List<Tuto> tuto) {
+		this.tuto = tuto;
+	}
 }

@@ -24,9 +24,13 @@ public class Categoria {
 	@Column
 	private String descrizione; 
 
-	@OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
+	@OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.LAZY)
     @JoinColumn(name = "categoria_id")
 	private List<Tuto> tuto;
+	
+	@OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.LAZY)
+    @JoinColumn(name = "categoria_id")
+	private List<Utente> utenti;
 	
 	public Categoria(){
 		this.tuto = new ArrayList<>();
