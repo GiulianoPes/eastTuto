@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import it.uniroma3.dialog.Dialog;
+import it.uniroma3.model.Tuto;
 import it.uniroma3.model.Utente;
 import it.uniroma3.persistence.DAO;
 import it.uniroma3.persistence.UtenteDao;
@@ -28,7 +29,7 @@ public class LoginUser extends HttpServlet{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		//Cerco se l'utente è registrato
+		//Cerco se l'utente ï¿½ registrato
 		UtenteDao utenteDao = new UtenteDao(emf);
 		Utente utente = utenteDao.findByCredentials(username, password);
 		if(null!=utenteDao.findByCredentials(username, password)){
@@ -36,6 +37,7 @@ public class LoginUser extends HttpServlet{
 			HttpSession session = request.getSession();
 			session.setAttribute("Utente", utente);
 			request.setAttribute("Dialog", new Dialog("Login effettuato"));
+			
 		}
 		else{
 			request.setAttribute("Dialog", new Dialog("username o password errata"));			

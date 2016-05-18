@@ -6,13 +6,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
 <link rel="stylesheet" href="css/style_home.css">
 <title>easyTuto</title>
 </head>
 <body>
 	<div class="wrapper">
 
-
+		<ul class="bg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
 
 
 		<%
@@ -76,7 +89,7 @@
 							</form>
 						</td>
 						<td>
-							<form class="profileBoxForm" action="viewMyTuto">
+							<form class="profileBoxForm" action="viewMyTuto" method="post">
 								<input class="profileBoxFormInput" type="submit" value="MyTuto">
 							</form>
 						</td>
@@ -88,18 +101,7 @@
 			%>
 		</div>
 		<div class="container"></div>
-		<ul class="bg-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
+
 	</div>
 	<script src="js/index.js"></script>
 </body>

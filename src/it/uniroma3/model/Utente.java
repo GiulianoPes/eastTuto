@@ -29,6 +29,14 @@ public class Utente {
     @JoinColumn(name = "utente_id")
 	private List<Tuto> tuto;
 	
+	public List<Tuto> getTuto() {
+		return tuto;
+	}
+
+	public void setTuto(List<Tuto> tuto) {
+		this.tuto = tuto;
+	}
+
 	public Utente(){
 		this.tuto = new ArrayList<>();
 	}

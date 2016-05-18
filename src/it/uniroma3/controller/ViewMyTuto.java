@@ -20,8 +20,13 @@ import it.uniroma3.persistence.TutoDao;
 import it.uniroma3.persistence.UtenteDao;
 
 @WebServlet("/viewMyTuto")
-public class MyTuto extends HttpServlet{
+public class ViewMyTuto extends HttpServlet{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("users-unit");
