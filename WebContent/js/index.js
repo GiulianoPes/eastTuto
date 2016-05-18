@@ -1,11 +1,12 @@
 
-
 $('body').ready(function(){
 
+	$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
+		$(".container").html(result);
+	}});
+	
 	if(location.hash!="#personal"){
-		$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
-			$(".container").html(result);
-		}});
+		
 	}else if (location.hash=="#personal"){
 		$.ajax({url: 'personalPage.jsp', type: 'post' , success: function(result){
 
@@ -13,7 +14,6 @@ $('body').ready(function(){
 			location.hash = 'personal';
 		}});
 	}
-
 
 	$("#login-button").click(function(event){
 		event.preventDefault();
