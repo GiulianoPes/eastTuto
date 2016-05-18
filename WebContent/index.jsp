@@ -89,8 +89,8 @@
 							</form>
 						</td>
 						<td>
-							<form class="profileBoxForm" action="viewMyTuto" method="post">
-								<input class="profileBoxFormInput" type="submit" value="MyTuto">
+							<form class="profileBoxForm" >
+								<input class="profileBoxFormInput" type="button" value="MyTuto" id="myTuto">
 							</form>
 						</td>
 					</tr>
@@ -101,7 +101,6 @@
 			%>
 		</div>
 		<div class="container"></div>
-
 	</div>
 	<script src="js/index.js"></script>
 </body>
