@@ -1,20 +1,20 @@
-<div class="myTuto" style="padding: 10px;">
-	<table style="width: 100%; border: solid;">
+<div class="myTuto">
+	<table class="myTutoTable">
 		<col width="20%">
 		<col width="70%">
 		<col width="10%">
 		<tr>
-			<td style="text-align: left;">
+			<td class="myTutoImage">
 				<img src="img/tuto1.jpg" width="100px" height="100px" />
 			</td>
 			<td>
-				<ul style="list-style:none; text-align: left;">
+				<ul class="myTutoDetails">
 					<li>Nome tuto: <b><%= tuto.getNome() %></b></li>
 					<li>Descrizione: <b><%= tuto.getDescrizione() %></b></li>
 					<li>Data di creazione: <b><%= tuto.getDataCreazione() %></b></li>
 				</ul>
 			</td>
-			<td style="text-align: right;">
+			<td class="myTutoOptions">
 				<ul style="list-style:none;">
 					<li><img src="img/icon32/magnifying-glass.png" width="32px" height="32px" title="Dettagli" /></li>
 					<li><img src="img/icon32/pencil.png" width="32px" height="32px" title="Modifica" /></li>

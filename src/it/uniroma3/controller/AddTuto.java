@@ -39,16 +39,13 @@ public class AddTuto extends HttpServlet {
 		//Creo il tuto
 		Tuto tuto = new Tuto();
 		tuto.setNome(request.getParameter("nome"));
-		tuto.setDescrizione(request.getParameter("descrizione"));		
+		tuto.setDescrizione(request.getParameter("descrizione"));
+		tuto.setDataCreazione(new Date(System.currentTimeMillis()) );
 		//Setto gli utenti al tuto
 		tuto.setCategoria(categoria);
 		tuto.setUtente(utente);
 		
-		
 		utente.addTuto(tuto);
-		//session.setAttribute("Utente", utente);
-		
-		
 		
 		//Salvo il tutto nel Db
 		tutoDao.update(tuto);		

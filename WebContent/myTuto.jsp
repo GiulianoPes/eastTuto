@@ -9,22 +9,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>easyTuto | myTuto</title>
-	<link rel="stylesheet" href="css/style.css"> 
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style_tuto.css">
 </head>
 <body>
+	<% Utente utente = (Utente)session.getAttribute("Utente"); %>
 	<div class="wrapper">
-		<div align="center">
-			<form class="profileBoxForm" action="compileTuto.jsp" method="post">
-				<input class="profileBoxFormInput" type="submit" value="Compila Tuto" />
-			</form>
-		</div>
 		<div class="container">
-			<h1 style="padding: 10px;">myTuto</h1>
-			<%
-				Utente utente = (Utente)session.getAttribute("Utente");
-			%>
-			<div align="center"><%= utente.getUsername() %></div>
-			<!-- questa div myTuto deve essere processata in una iterazione -->
+			<h1 style="padding: 10px;"><%= utente.getUsername() %>'s Tuto</h1>
 			<% for(Tuto tuto : utente.getTuto()) { %>
 				<%@ include file="templates/tuto.html" %>
 			<% } %>

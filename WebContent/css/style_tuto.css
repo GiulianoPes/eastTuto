@@ -1,0 +1,21 @@
+.myTuto {
+	padding: 10px;
+}
+
+.myTutoTable {
+	width: 100%;
+	border: solid;
+}
+
+.myTutoImage {
+	text-align: left;
+}
+
+.myTutoDetails {
+	list-style:none;
+	text-align: left;
+}
+
+.myTutoOptions {
+	text-align: right;
+}
