@@ -2,6 +2,18 @@
 
 $('body').ready(function(){
 
+	if(location.hash!="#personal"){
+		$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
+			$(".container").html(result);
+		}});
+	}else if (location.hash=="#personal"){
+		$.ajax({url: 'personalPage.jsp', type: 'post' , success: function(result){
+
+			$(".container").html(result);
+			location.hash = 'personal';
+		}});
+	}
+
 
 	$("#login-button").click(function(event){
 		event.preventDefault();
@@ -9,20 +21,19 @@ $('body').ready(function(){
 		$('form').fadeOut(500);
 		$('.wrapper').addClass('form-success');
 	});	
-	
-	$("#myTuto").click(function(event){
-		
-		$.ajax({url: 'myTuto.jsp', type: 'post' , success: function(result){
-			
-	        $(".container").html(result);
-	    }});
+
+	$("#personalPage").click(function(event){
+
+		$.ajax({url: 'personalPage.jsp', type: 'post' , success: function(result){
+
+			$(".container").html(result);
+			location.hash = 'personal';
+		}});
 	});
-	
-	$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
-        $(".container").html(result);
-    }});
-	
-	
+
+
+
+
 
 
 

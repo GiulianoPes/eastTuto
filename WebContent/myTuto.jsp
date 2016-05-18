@@ -8,7 +8,6 @@
 
 	<% Utente utente = (Utente)session.getAttribute("Utente"); %>
 
-			<h1 style="padding: 10px;"><%= utente.getUsername() %>'s Tuto</h1>
 			<% for(Tuto tuto : utente.getTuto()) { %>
 				<%@ include file="templates/tuto.html" %>
 			<% } %>

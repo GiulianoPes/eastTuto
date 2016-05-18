@@ -121,7 +121,7 @@ public class TutoDao implements DAO<Tuto>{
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();	
 		
-		Query query = em.createQuery("from Tuto t ORDER BY t.dataCreazione DESC");
+		Query query = em.createQuery("from Tuto t ORDER BY t.dataCreazione ASC");
 		lastTuto = query.getResultList();
 				
 		em.close();		

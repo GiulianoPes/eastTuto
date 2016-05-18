@@ -88,7 +88,7 @@
 										</td>
 										<td style="text-align: right;">
 											<form class="profileBoxForm" >
-												<input class="profileBoxFormInput" type="button" value="MyTuto" id="myTuto">
+												<input class="profileBoxFormInput" type="button" value="<%=utente.getUsername() %>" id="personalPage">
 											</form>
 										</td>
 									</tr>

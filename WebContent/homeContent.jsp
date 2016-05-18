@@ -35,7 +35,4 @@
 
 	</table>
 </div>
-<div class="box" id="lastTuto">
-
-</div>
-lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>lalalls<br>
+<div class="box" id="lastTuto"></div>
