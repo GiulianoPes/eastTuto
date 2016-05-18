@@ -11,7 +11,11 @@ $('body').ready(function(){
 	});	
 	
 	$("#myTuto").click(function(event){
-		alert("jhbkjb");
+		
+		$.ajax({url: 'myTuto.jsp', type: 'post' , success: function(result){
+			
+	        $(".container").html(result);
+	    }});
 	});
 	
 	$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
