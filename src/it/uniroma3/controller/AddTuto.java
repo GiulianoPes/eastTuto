@@ -23,15 +23,21 @@ import it.uniroma3.persistence.TutoDao;
 @WebServlet("/addTuto")
 public class AddTuto extends HttpServlet {
 	protected void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
+		
+		Facade facade = new Facade();
+		
 		//Creo categoria
-		Categoria categoria = new Categoria();
-		categoria.setNome(request.getParameter("categoria"));
+		String nomeCategoria = request.getParameter("categoria");
+		//Deve cercare nel db, la stessa categoria		
+		//categoria.setId(2L);
+		//categoria.setDescrizione("seconda");
+		
+		Categoria categoria = Facade.getCategoria(nomeCategoria);		
+		
 		
 		//Creo utente
 		HttpSession session = request.getSession();
 		Utente utente = (Utente)session.getAttribute("Utente");	
-		
-		Facade facade = new Facade();
 		
 		// creo il tuto
 		Tuto tuto = new Tuto();

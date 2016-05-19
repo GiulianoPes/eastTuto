@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import it.uniroma3.model.Categoria;
 import it.uniroma3.model.Tuto;
+import it.uniroma3.model.Utente;
 
 public class CategoriaDao implements DAO<Categoria>{
 
@@ -62,21 +63,39 @@ public class CategoriaDao implements DAO<Categoria>{
 		this.em.close();
 		return result;
 	}
+
+	public Categoria findByName(String nomeCategoria){
+		Categoria categoria = null;
+		EntityTransaction tx = this.em.getTransaction();	
+
+		Query query = this.em.createQuery("from Categoria c where c.nome=:p");
+		query.setParameter("p", nomeCategoria);
+
+		List<Categoria> list = query.getResultList();
+
+		if(!list.isEmpty()){
+			categoria = list.get(0);
+		}
+		
+		this.em.close();			
+		return categoria;
+	}
+	
 	/*
 	@Override
 	public List<Categoria> findByParameter(String parameter1, String column1, String parameter2, String column2) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();	
-		
+
 		Query query = em.createQuery("from Categoria t where t.c1=:p1 and t.c2=:p2");
 		query.setParameter("p1", parameter1);
 		query.setParameter("p2", parameter2);
 		query.setParameter("c1", column1);
 		query.setParameter("c2", column2);
 		List<Categoria> list = query.getResultList();
-		
+
 		em.close();
-		
+
 		return list;
 	}
 
@@ -84,16 +103,16 @@ public class CategoriaDao implements DAO<Categoria>{
 	public List<Categoria> findByParameter(String parameter, String column) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();	
-		
+
 		Query query = em.createQuery("from Categoria t where t.c=:p");
 		query.setParameter("p", parameter);
 		query.setParameter("c", column);
 		List<Categoria> list = query.getResultList();
-		
+
 		em.close();
-		
+
 		return list;
 	}
-	*/
+	 */
 
 }

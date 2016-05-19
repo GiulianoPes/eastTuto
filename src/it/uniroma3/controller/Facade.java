@@ -6,8 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import it.uniroma3.model.Categoria;
 import it.uniroma3.model.Tuto;
 import it.uniroma3.model.Utente;
+import it.uniroma3.persistence.CategoriaDao;
 import it.uniroma3.persistence.DAO;
 import it.uniroma3.persistence.TutoDao;
 import it.uniroma3.persistence.UtenteDao;
@@ -41,7 +43,7 @@ public class Facade {
 	public static void addNewTuto(Tuto tuto) {
 		em = emf.createEntityManager();
 		DAO tutoDao = new TutoDao(em);
-		tutoDao.update(tuto);
+		tutoDao.save(tuto);
 	}
 	
 	// get list of last tuto insert
@@ -49,5 +51,11 @@ public class Facade {
 		em = emf.createEntityManager();
 		TutoDao tutoDao = new TutoDao(em);
 		return tutoDao.lastTuto();
+	}
+	
+	public static Categoria getCategoria(String nomeCategoria){
+		em = emf.createEntityManager();
+		CategoriaDao categoriaDao = new CategoriaDao(em);
+		return categoriaDao.findByName(nomeCategoria);
 	}
 }
