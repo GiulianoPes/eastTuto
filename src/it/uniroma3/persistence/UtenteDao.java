@@ -1,5 +1,6 @@
 package it.uniroma3.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -128,5 +129,21 @@ public class UtenteDao implements DAO<Utente>{
 		}
 		em.close();		
 		return utente;
+	}
+	
+	public List<Utente> getFollowingByUtente(Utente utente){		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();	
+		/*
+		Query query = em.createQuery("from utente join utente as u where u.utente_id=:id ");
+		query.setParameter("id", utente.getId());
+		query.getResultList().toString();
+		*/
+		//List<Utente> following = utente.getFollowing();
+		List<Utente> following = new ArrayList<Utente>();
+		
+		em.close();
+		
+		return following;
 	}
 }
