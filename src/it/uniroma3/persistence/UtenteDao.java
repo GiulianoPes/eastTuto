@@ -4,70 +4,80 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import it.uniroma3.model.Categoria;
 import it.uniroma3.model.Utente;
 
 public class UtenteDao implements DAO<Utente>{
 
-	EntityManagerFactory emf;
-
-	public UtenteDao(EntityManagerFactory emf){
-		this.emf = emf;
+	private EntityManager em;
+	
+	public UtenteDao(EntityManager em){
+		this.em = em;
 	}
 
 	@Override
 	public void save(Utente utente) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		em.persist(utente);
+		this.em.persist(utente);
 		tx.commit();
-		em.close();		
+		this.em.close();		
 	}
 
 	@Override
 	public void update(Utente utente) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		em.merge(utente);
+		this.em.merge(utente);
 		tx.commit();
-		em.close();
+		this.em.close();
+	}
+	
+	public Utente findByUsername(String username) {
+		Utente utente = null;	
+		
+		//Query query = this.em.createQuery("from Utente u where u.username=:u and u.password=:p");
+		Query query = this.em.createQuery("from Utente u where u.username=:u");
+		query.setParameter("u", username);
+		//query.setParameter("p", "v");
+
+		List<Utente> list = query.getResultList();
+		
+		if(!list.isEmpty()){
+			utente = list.get(0);
+		}
+		
+		this.em.close();		
+		return utente;
 	}
 
 	@Override
 	public Utente findById(long id) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		Utente u = em.find(Utente.class, id);
+		Utente u = this.em.find(Utente.class, id);
 		tx.commit();
-		em.close();
+		this.em.close();
 		return u;
 	}
 
 	@Override
 	public void delete(Utente utente) {
-
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		Utente toRemove = em.merge(utente);
-		em.remove(toRemove);
+		Utente toRemove = this.em.merge(utente);
+		this.em.remove(toRemove);
 		tx.commit();		
-		em.close();
+		this.em.close();
 
 	}
 
 	@Override
 	public List<Utente> findAll() {
-		EntityManager em = this.emf.createEntityManager();
 		List<Utente> result = em.createNamedQuery("Utente.findAll").getResultList();
-		em.close();
+		this.em.close();
 		return result;
 	}
 
@@ -115,10 +125,9 @@ public class UtenteDao implements DAO<Utente>{
 	
 	public Utente findByCredentials(String username, String password){
 		Utente utente = null;
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();	
+		EntityTransaction tx = this.em.getTransaction();	
 		
-		Query query = em.createQuery("from Utente u where u.username=:u and u.password=:p");
+		Query query = this.em.createQuery("from Utente u where u.username=:u and u.password=:p");
 		query.setParameter("u", username);
 		query.setParameter("p", password);
 
@@ -127,23 +136,14 @@ public class UtenteDao implements DAO<Utente>{
 		if(!list.isEmpty()){
 			utente = list.get(0);
 		}
-		em.close();		
+		this.em.close();		
 		return utente;
 	}
 	
 	public List<Utente> getFollowingByUtente(Utente utente){		
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();	
-		/*
-		Query query = em.createQuery("from utente join utente as u where u.utente_id=:id ");
-		query.setParameter("id", utente.getId());
-		query.getResultList().toString();
-		*/
-		//List<Utente> following = utente.getFollowing();
+		EntityTransaction tx = this.em.getTransaction();	
 		List<Utente> following = new ArrayList<Utente>();
-		
-		em.close();
-		
+		this.em.close();
 		return following;
 	}
 }

@@ -14,59 +14,54 @@ import it.uniroma3.model.Utente;
 
 public class TutoDao implements DAO<Tuto>{
 
-	EntityManagerFactory emf;
+	private EntityManager em;
 
-	public TutoDao(EntityManagerFactory emf){
-		this.emf = emf;
+	public TutoDao(EntityManager em){
+		this.em = em;
 	}
 
 	@Override
 	public void save(Tuto tuto){
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		em.persist(tuto);
+		this.em.persist(tuto);
 		tx.commit();
-		em.close();
+		this.em.close();
 	}
 
 	@Override
 	public void update(Tuto tuto) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		em.merge(tuto);
+		this.em.merge(tuto);
 		tx.commit();
-		em.close();
+		this.em.close();
 	}
 
 	@Override
 	public Tuto findById(long id) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		Tuto t = em.find(Tuto.class, id);
+		Tuto t = this.em.find(Tuto.class, id);
 		tx.commit();
-		em.close();
+		this.em.close();
 		return t;
 	}
 
 	@Override
 	public void delete(Tuto tuto) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		Tuto toRemove = em.merge(tuto);
-		em.remove(toRemove);
+		Tuto toRemove = this.em.merge(tuto);
+		this.em.remove(toRemove);
 		tx.commit();		
-		em.close();
+		this.em.close();
 	}
 
 	@Override
 	public List<Tuto> findAll() {
-		EntityManager em = this.emf.createEntityManager();
-		List<Tuto> result = em.createNamedQuery("Tuto.findAll").getResultList();
-		em.close();
+		List<Tuto> result = this.em.createNamedQuery("Tuto.findAll").getResultList();
+		this.em.close();
 		return result;
 	}
 
@@ -105,40 +100,35 @@ public class TutoDao implements DAO<Tuto>{
 	*/
 	
 	public List<Tuto> findTutoByUtente(Utente utente){
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();	
+		EntityTransaction tx = this.em.getTransaction();	
 		
-		Query query = em.createQuery("from Tuto t where t.utente_id=:p");
+		Query query = this.em.createQuery("from Tuto t where t.utente_id=:p");
 		query.setParameter("p", utente.getId());
 		List<Tuto> listaTuto = query.getResultList();
 				
-		em.close();		
+		this.em.close();		
 		return listaTuto;
 	}
 	
 	public List<Tuto> lastTuto(){
 		List<Tuto> lastTuto=null;
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();	
+		EntityTransaction tx = this.em.getTransaction();	
 		
-		Query query = em.createQuery("from Tuto t ORDER BY t.dataCreazione ASC");
+		Query query = this.em.createQuery("from Tuto t ORDER BY t.dataCreazione ASC");
 		lastTuto = query.getResultList();
 				
-		em.close();		
-		
-		
+		this.em.close();		
 		return lastTuto;
 	}
 	
 	public List<Tuto> findTutoByCategoria(Categoria categoria){
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();	
+		EntityTransaction tx = this.em.getTransaction();	
 		
-		Query query = em.createQuery("from Categoria c where c.categoria_id=:p");
+		Query query = this.em.createQuery("from Categoria c where c.categoria_id=:p");
 		query.setParameter("p", categoria.getId());
 		List<Tuto> categorie = query.getResultList();
 				
-		em.close();		
+		this.em.close();		
 		return categorie;
 	}
 }

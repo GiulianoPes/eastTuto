@@ -12,7 +12,10 @@
 	<div class="wrapper">
 		<div class="container">
 		<h1>Register</h1>
-
+		
+		<div>
+			<center><h1>${Dialog.message}</h1></center>
+		</div>
 		<form action="newUser" method="post">
 			<input type="text" name="username" placeholder="Username">
 			<input type="password" name="password" placeholder="Password">

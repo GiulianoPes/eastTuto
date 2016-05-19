@@ -18,12 +18,10 @@ import it.uniroma3.persistence.TutoDao;
 @WebServlet("/lastTuto")
 public class LastTuto extends HttpServlet{
 
-	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
-
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("users-unit");
-		TutoDao tutoDao = new TutoDao(emf);
+	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
 		
-		List<Tuto> lastTuto = tutoDao.lastTuto();
+		Facade facade = new Facade();
+		List<Tuto> lastTuto = facade.getLastTuto();
 		
 		request.setAttribute("lastTuto", lastTuto);
 		

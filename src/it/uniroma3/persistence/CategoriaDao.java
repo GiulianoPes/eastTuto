@@ -12,59 +12,54 @@ import it.uniroma3.model.Tuto;
 
 public class CategoriaDao implements DAO<Categoria>{
 
-	private EntityManagerFactory emf;
+	private EntityManager em;
 
-	public CategoriaDao(EntityManagerFactory emf){
-		this.emf = emf;
+	public CategoriaDao(EntityManager em){
+		this.em = em;
 	}
 
 	@Override
 	public void save(Categoria categoria) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		em.persist(categoria);
+		this.em.persist(categoria);
 		tx.commit();
-		em.close();		
+		this.em.close();		
 	}
 
 	@Override
 	public void update(Categoria categoria) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		em.merge(categoria);
+		this.em.merge(categoria);
 		tx.commit();
-		em.close();
+		this.em.close();
 	}
 
 	@Override
 	public Categoria findById(long id) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		Categoria c = em.find(Categoria.class, id);
+		Categoria c = this.em.find(Categoria.class, id);
 		tx.commit();
-		em.close();
+		this.em.close();
 		return c;
 	}
 
 	@Override
 	public void delete(Categoria categoria) {
-		EntityManager em = this.emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		EntityTransaction tx = this.em.getTransaction();
 		tx.begin();
-		Categoria toRemove = em.merge(categoria);
-		em.remove(toRemove);
+		Categoria toRemove = this.em.merge(categoria);
+		this.em.remove(toRemove);
 		tx.commit();		
-		em.close();		
+		this.em.close();		
 	}
 
 	@Override
 	public List<Categoria> findAll() {
-		EntityManager em = this.emf.createEntityManager();
-		List<Categoria> result = em.createNamedQuery("Categoria.findAll").getResultList();
-		em.close();
+		List<Categoria> result = this.em.createNamedQuery("Categoria.findAll").getResultList();
+		this.em.close();
 		return result;
 	}
 	/*

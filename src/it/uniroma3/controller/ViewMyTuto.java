@@ -31,6 +31,7 @@ public class ViewMyTuto extends HttpServlet{
 		
 		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("users-unit");
 		HttpSession session = request.getSession();
+		Utente utente = (Utente)session.getAttribute("Utente");
 		
 		/*
 		Utente utente = (Utente)session.getAttribute("Utente");
