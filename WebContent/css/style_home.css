@@ -163,14 +163,13 @@ body :-ms-input-placeholder {
 }
 
 .wrapper {
-	position: absolute;
+	position: fixed;
 	height: 100%;
 	width: 100%;
 	background: #50a3a2;
 	background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
 	background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
-	overflow-y: auto;
-	overflow-x: hidden;
+	
 }
 
 .wrapper.form-success .container h1 {
@@ -183,7 +182,10 @@ body :-ms-input-placeholder {
 	width: 900px;
 	margin: 0 auto;
 	top: 70px;
+	margin-bottom:50px;
 	text-align: center;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .container h1 {
