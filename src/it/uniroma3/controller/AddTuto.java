@@ -27,14 +27,16 @@ public class AddTuto extends HttpServlet {
 	protected void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 
 		Facade facade = new Facade();
-		String nextPage = "/showTuto.jsp";
+		String nextPage = "";
 
 		//Request
 		String nomeCategoria = request.getParameter("categoria");
 		String nome = request.getParameter("nome");
 		String descrizione =  request.getParameter("descrizione");
 
-		if(!nomeCategoria.equals(null)){
+		
+		if(nomeCategoria != null){
+			System.out.println("----------------------------"+nomeCategoria);
 
 			Categoria categoria = Facade.getCategoria(nomeCategoria);		
 
@@ -63,10 +65,13 @@ public class AddTuto extends HttpServlet {
 			request.setAttribute("Tuto",tuto);		
 
 			request.setAttribute("Dialog", new Dialog("Hai inserito il tuo tuto"));
+			
+			nextPage = "/showTuto.jsp";
 		}
 		else{
 			List<Categoria> categorie = Facade.getCategorie();
 			request.setAttribute("categorie", categorie);
+			nextPage = "/compileTuto.jsp";
 		}
 		
 		ServletContext application = getServletContext();		

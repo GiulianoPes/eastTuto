@@ -19,7 +19,7 @@
 			<form class="conteinerTuto" action="addTuto" method="post">
 				<input type="text" name="nome" placeholder="Nome">
 				<input type="text" name="descrizione" placeholder="Descrizione">
- 				<select>
+ 				<select name="categoria">
  					<% for(Categoria categoria : categorie) { %>
 						<option><%=categoria.getNome()%></option>
 					<% } %>
