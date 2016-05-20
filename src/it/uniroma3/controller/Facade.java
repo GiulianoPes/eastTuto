@@ -64,4 +64,20 @@ public class Facade {
 		UtenteDao utenteDao = new UtenteDao(em);
 		return utenteDao.getTuto(utente);
 	}
+	public static Utente findUtenteByUsername(String username){
+		em = emf.createEntityManager();
+		UtenteDao utenteDao = new UtenteDao(em);
+		Utente utente = utenteDao.findByUsername(username);
+		if (utente != null) {
+			return utente;
+		}else {
+			return null;
+		}
+	}
+	public static void addFollowing(Utente currentUser, Utente following){
+		em = emf.createEntityManager();
+		UtenteDao utenteDao = new UtenteDao(em);
+		currentUser.addFollowing(following);
+		utenteDao.update(currentUser);
+	}
 }

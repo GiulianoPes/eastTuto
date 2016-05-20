@@ -1,38 +1,50 @@
 
 $('body').ready(function(){
 
-	$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
-		$(".container").html(result);
-	}});
-	
-	if(location.hash!="#personal"){
-		
+	userNameHash = location.hash;
+	userName = location.hash.substring(1,userNameHash.size);
+
+
+	if(userName!=""){
+
+		$.ajax({url: 'getUser', type: 'post' ,data:'username='+userName, success: function(result){
+			$(".container").html(result);
+		}});
+	}else{
+
+
+
+		$.ajax({url: 'homeContent.jsp', type: 'post' , success: function(result){
+			$(".container").html(result);
+		}});
+
+		/*if(location.hash!="#personal"){
+
 	}else if (location.hash=="#personal"){
 		$.ajax({url: 'personalPage.jsp', type: 'post' , success: function(result){
 
 			$(".container").html(result);
 			location.hash = 'personal';
 		}});
+	}*/
+
+		$("#login-button").click(function(event){
+			event.preventDefault();
+
+			$('form').fadeOut(500);
+			$('.wrapper').addClass('form-success');
+		});	
+
+		$("#personalPage").click(function(event){
+			
+			$.ajax({url: 'getUser', type: 'post' ,data:'username='+$("#personalPage").attr("value"), success: function(result){
+				$(".container").html(result);
+				location.hash = $("#personalPage").attr("value");
+			}});
+		});
+
+
 	}
-
-	$("#login-button").click(function(event){
-		event.preventDefault();
-
-		$('form').fadeOut(500);
-		$('.wrapper').addClass('form-success');
-	});	
-
-	$("#personalPage").click(function(event){
-
-		$.ajax({url: 'personalPage.jsp', type: 'post' , success: function(result){
-
-			$(".container").html(result);
-			location.hash = 'personal';
-		}});
-	});
-
-
-
 
 
 

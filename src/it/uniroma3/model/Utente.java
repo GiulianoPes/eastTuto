@@ -31,7 +31,7 @@ public class Utente {
 	private List<Tuto> tuto;
 	
 	//Following
-	@ManyToMany(cascade = {CascadeType.DETACH}, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = {CascadeType.DETACH}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "utente_id", referencedColumnName = "id")
 	private List<Utente> following;
 	
@@ -82,4 +82,13 @@ public class Utente {
 	public void addFollowing(Utente utente){
 		this.following.add(utente);
 	}
+
+	public List<Utente> getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(List<Utente> following) {
+		this.following = following;
+	}
+	
 }

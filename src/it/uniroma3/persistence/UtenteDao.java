@@ -157,4 +157,9 @@ public class UtenteDao implements DAO<Utente>{
 		this.em.close();		
 		return listTuto;
 	}
+	public void addFollowing(Utente currentUser, Utente following){
+		currentUser.addFollowing(following);
+		this.update(currentUser);	
+
+	}
 }
