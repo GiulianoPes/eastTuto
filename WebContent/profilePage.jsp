@@ -7,8 +7,10 @@
 
 <link rel="stylesheet" href="css/style_personal.css">
 <link rel="stylesheet" href="css/style_tuto.css">
+<link rel="stylesheet" href="css/style_follower.css">
 
 <script src="js/tuto.js"></script>
+<script src="js/follower.js"></script>
 
 
 </head>
@@ -39,7 +41,7 @@
 		<td>
 			<div id="followerBox">Following<br>
 			<% for(Utente following : utentePage.getFollowing()) { %>
-				<%=following.getUsername()%><br>
+				<%@ include file="templates/follower.html"%>
 				<% } %>
 			</div>
 		</td>

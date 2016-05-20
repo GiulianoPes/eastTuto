@@ -1,0 +1,20 @@
+.follower {
+	background-color: white;
+	-moz-box-shadow: 1px 1px 1px #165346;
+	-webkit-box-shadow: 1px 1px 1px #165346;
+	box-shadow: 1px 1px 1px #165346;
+	margin-top: 4px;
+	margin-right: 4px;
+	color: black;
+	width: 60px;
+	height: 60px;
+	padding-top: 10px;
+	border-radius: 35px;
+	cursor: pointer;
+}
+
+.follower:hover {
+	-moz-box-shadow: 2px 2px 1px #165346;
+	-webkit-box-shadow: 2px 2px 1px #165346;
+	box-shadow: 2px 2px 1px #165346;
+}
