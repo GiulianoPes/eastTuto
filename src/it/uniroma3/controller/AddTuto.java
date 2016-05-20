@@ -2,6 +2,8 @@ package it.uniroma3.controller;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
@@ -23,43 +25,49 @@ import it.uniroma3.persistence.TutoDao;
 @WebServlet("/addTuto")
 public class AddTuto extends HttpServlet {
 	protected void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
-		
+
 		Facade facade = new Facade();
-		
-		//Creo categoria
+		String nextPage = "/showTuto.jsp";
+
+		//Request
 		String nomeCategoria = request.getParameter("categoria");
-		//Deve cercare nel db, la stessa categoria		
-		//categoria.setId(2L);
-		//categoria.setDescrizione("seconda");
-		
-		Categoria categoria = Facade.getCategoria(nomeCategoria);		
-		
-		
-		//Creo utente
-		HttpSession session = request.getSession();
-		Utente utente = (Utente)session.getAttribute("Utente");	
-		
-		// creo il tuto
-		Tuto tuto = new Tuto();
-		tuto.setNome(request.getParameter("nome"));
-		tuto.setDescrizione(request.getParameter("descrizione"));
-		tuto.setDataCreazione(new Date(System.currentTimeMillis()) );
-		
-		//Setto gli utenti al tuto
-		tuto.setCategoria(categoria);
-		tuto.setUtente(utente);
-		
-		//utente.addTuto(tuto);
-		//utente.getTuto().add(tuto); // TODO to fix don't add tuto in user
-		
-		//Salvo il tutto nel Db
-		facade.addNewTuto(tuto);
-		
-		//Invio su showTuto.jsp il riepilogo del tuto
-		request.setAttribute("Tuto",tuto);
-		String nextPage = "/showTuto.jsp";		
-		
-		request.setAttribute("Dialog", new Dialog("Hai inserito il tuo tuto"));
+		String nome = request.getParameter("nome");
+		String descrizione =  request.getParameter("descrizione");
+
+		if(!nomeCategoria.equals(null)){
+
+			Categoria categoria = Facade.getCategoria(nomeCategoria);		
+
+
+			//Creo utente
+			HttpSession session = request.getSession();
+			Utente utente = (Utente)session.getAttribute("Utente");	
+
+			// creo il tuto
+			Tuto tuto = new Tuto();
+			tuto.setNome(nome);
+			tuto.setDescrizione(descrizione);
+			tuto.setDataCreazione(new Date(System.currentTimeMillis()));
+
+			//Setto gli utenti al tuto
+			tuto.setCategoria(categoria);
+			tuto.setUtente(utente);
+
+			//utente.addTuto(tuto);
+			//utente.getTuto().add(tuto); // TODO to fix don't add tuto in user
+
+			//Salvo il tutto nel Db
+			Facade.addNewTuto(tuto);
+
+			//Invio su showTuto.jsp il riepilogo del tuto
+			request.setAttribute("Tuto",tuto);		
+
+			request.setAttribute("Dialog", new Dialog("Hai inserito il tuo tuto"));
+		}
+		else{
+			List<Categoria> categorie = Facade.getCategorie();
+			request.setAttribute("categorie", categorie);
+		}
 		
 		ServletContext application = getServletContext();		
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);		

@@ -1,0 +1,8 @@
+/**
+ * 
+ */
+ $('body').ready(function (){
+	 $.ajax({
+		 
+	 });
+ });

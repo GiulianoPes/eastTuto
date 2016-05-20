@@ -80,4 +80,9 @@ public class Facade {
 		currentUser.addFollowing(following);
 		utenteDao.update(currentUser);
 	}
+	public static List<Categoria> getCategorie(){
+		em = emf.createEntityManager();
+		CategoriaDao categoriaDao = new CategoriaDao(em);
+		return categoriaDao.getCategorie();
+	}
 }

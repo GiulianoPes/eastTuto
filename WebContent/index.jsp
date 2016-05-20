@@ -106,7 +106,7 @@
 										</form>
 									</td>
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="compileTuto.jsp">
+										<form class="profileBoxForm" action="addTuto" method="post">
 											<input class="profileBoxFormInput" type="submit" value="+">
 										</form>
 									</td>

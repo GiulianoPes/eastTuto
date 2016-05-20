@@ -81,6 +81,15 @@ public class CategoriaDao implements DAO<Categoria>{
 		return categoria;
 	}
 	
+	public List<Categoria> getCategorie(){
+		EntityTransaction tx = this.em.getTransaction();
+		
+		Query query = this.em.createQuery("from Categoria");
+		List<Categoria> list = query.getResultList();		
+		this.em.close();
+		return list;		
+	}
+	
 	/*
 	@Override
 	public List<Categoria> findByParameter(String parameter1, String column1, String parameter2, String column2) {
