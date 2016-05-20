@@ -83,8 +83,8 @@
 								</tr>
 							</table>
 						</div> <%
- 	} else {
- %>
+ 						} else {
+						 %>
 						<div id="userProfileBox">
 							<table>
 								<tr>
