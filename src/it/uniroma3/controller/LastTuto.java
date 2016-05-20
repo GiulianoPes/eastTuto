@@ -19,9 +19,8 @@ import it.uniroma3.persistence.TutoDao;
 public class LastTuto extends HttpServlet{
 
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-		
-		Facade facade = new Facade();
-		List<Tuto> lastTuto = facade.getLastTuto();
+
+		List<Tuto> lastTuto = Facade.getLastTuto();
 		
 		request.setAttribute("lastTuto", lastTuto);
 		

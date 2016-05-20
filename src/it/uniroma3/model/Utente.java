@@ -75,6 +75,10 @@ public class Utente {
 		return this.tuto;
 	}
 	
+	public void setTuto(List<Tuto> listTuto) {
+		this.tuto = listTuto;
+	}
+	
 	public void addFollowing(Utente utente){
 		this.following.add(utente);
 	}

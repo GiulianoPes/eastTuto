@@ -7,9 +7,11 @@
 <link rel="stylesheet" href="css/style_tuto.css">
 
 	<% Utente utente = (Utente)session.getAttribute("Utente"); %>
-
-			<% for(Tuto tuto : utente.getTuto()) { %>
-				<%@ include file="templates/tuto.html" %>
-			<% } %>
+	
+	<%= utente.getUsername() %>
+	
+	<% for(Tuto tuto : utente.getTuto()) { %>
+		<%@ include file="templates/tuto.html" %>
+	<% } %>
 
 

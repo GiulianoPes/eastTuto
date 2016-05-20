@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import it.uniroma3.model.Tuto;
 import it.uniroma3.model.Utente;
 
 public class UtenteDao implements DAO<Utente>{
@@ -145,5 +146,17 @@ public class UtenteDao implements DAO<Utente>{
 		List<Utente> following = new ArrayList<Utente>();
 		this.em.close();
 		return following;
+	}
+	
+	public List<Tuto> getTuto(Utente utente) {	
+		
+		Query query = this.em.createQuery("from Tuto t where t.utente_id=:id");
+		query.setParameter("id", utente.getId());
+		//query.setParameter("p", "v");
+
+		List<Tuto> listTuto = query.getResultList();
+		
+		this.em.close();		
+		return listTuto;
 	}
 }

@@ -10,6 +10,15 @@
 	padding-top: 5px;
 }
 
+#easyTutoLogo:link {
+	text-decoration: none;
+}
+
+#easyTutoLogo:visited {
+	text-decoration: none;
+}
+
+
 #searchBox {
 	width: 100%;
 }

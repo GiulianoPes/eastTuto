@@ -33,13 +33,9 @@ public class ViewMyTuto extends HttpServlet{
 		HttpSession session = request.getSession();
 		Utente utente = (Utente)session.getAttribute("Utente");
 		
-		/*
-		Utente utente = (Utente)session.getAttribute("Utente");
-		
-		TutoDao tutoDao = new TutoDao(emf);
-		List<Tuto> listaTuto = tutoDao.findTutoByUtente(utente);
-		request.setAttribute("listaTuto", listaTuto);
-		*/
+		List<Tuto> listaTuto = Facade.getTutoFromUser(utente);
+		utente.setTuto(listaTuto);
+		session.setAttribute("Utente", utente);
 		
 		String nextPage = "/myTuto.jsp";
 		ServletContext application = getServletContext();		

@@ -8,8 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 
-<link rel="stylesheet" href="css/style_home.css">
-<title>easyTuto</title>
+	<link rel="stylesheet" href="css/style_home.css">
+	<title>easyTuto</title>
+	
 </head>
 <body>
 	<div class="wrapper">
@@ -39,7 +40,7 @@
 					<col width="50%">
 					<col width="30%">
 					<tr>
-						<td style="text-align:left; padding-left: 25px;"><form action="index.jsp"><h1>easyTuto</h1></form></td>
+						<td style="text-align:left; padding-left: 25px;"><a href="index.jsp" id="easyTutoLogo"><h1>easyTuto</h1></a></td>
 						<td>
 							<div id="searchBox">
 								<form class="profileBoxForm" action="search">
@@ -93,7 +94,7 @@
 										</td>
 										<td style="text-align: right;">
 											<form class="profileBoxForm" action="compileTuto.jsp">
-												<input class="profileBoxFormInput" type="button" value="Compila Tuto" >
+												<input class="profileBoxFormInput" type="button" value="+" >
 											</form>
 										</td>
 									</tr>

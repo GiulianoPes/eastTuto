@@ -58,4 +58,10 @@ public class Facade {
 		CategoriaDao categoriaDao = new CategoriaDao(em);
 		return categoriaDao.findByName(nomeCategoria);
 	}
+	
+	public static List<Tuto> getTutoFromUser(Utente utente) {
+		em = emf.createEntityManager();
+		UtenteDao utenteDao = new UtenteDao(em);
+		return utenteDao.getTuto(utente);
+	}
 }
