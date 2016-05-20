@@ -27,9 +27,7 @@ public class ViewMyTuto extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
-		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("users-unit");
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Utente utente = (Utente)session.getAttribute("Utente");
 		

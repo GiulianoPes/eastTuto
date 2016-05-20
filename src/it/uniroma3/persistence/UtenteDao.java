@@ -152,8 +152,6 @@ public class UtenteDao implements DAO<Utente>{
 		
 		Query query = this.em.createQuery("from Tuto t where t.utente_id=:id");
 		query.setParameter("id", utente.getId());
-		//query.setParameter("p", "v");
-
 		List<Tuto> listTuto = query.getResultList();
 		
 		this.em.close();		

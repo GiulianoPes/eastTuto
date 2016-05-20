@@ -26,7 +26,7 @@ public class Utente {
 	@Column(nullable = false)
 	private String password;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "utente_id")
 	private List<Tuto> tuto;
 	
