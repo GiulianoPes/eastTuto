@@ -28,7 +28,6 @@
 				<li></li>
 			</ul>
 		</div>
-	</div>
 
 	<%
 		Utente utente = (Utente) session.getAttribute("Utente");
@@ -124,6 +123,8 @@
 
 
 	<div class="container"></div>
+	
+	</div>
 	<script src="js/index.js"></script>
 </body>
 </html>

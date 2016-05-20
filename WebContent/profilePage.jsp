@@ -6,6 +6,9 @@
 	import="java.util.List"%>
 
 <link rel="stylesheet" href="css/style_personal.css">
+<link rel="stylesheet" href="css/style_tuto.css">
+
+<script src="js/tuto.js"></script>
 
 
 </head>
