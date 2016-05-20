@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="css/style_tuto.css">
 
 </head>
-<% Utente utente = (Utente) request.getAttribute("Utente"); %>
+<% Utente utentePage = (Utente) request.getAttribute("Utente");
+	Utente currentUtente = (Utente) session.getAttribute("Utente");
+%>
 <script src="js/personal.js"></script>
 
 
@@ -22,22 +24,26 @@
 	<tr>
 		<td colspan="3">
 			<div id="personalUpperBox">
-				<h1><%=utente.getUsername() %>'s world
-				</h1>
+				<h1><%=utentePage.getUsername() %>'s world</h1>
+				<% if(!utentePage.getUsername().equals(currentUtente.getUsername())){ %>
+				<div>
+					<input class="profileBoxFormInput" type="button" value="+Follow+" id="follow">
+				</div>
+				<%} %>
 			</div>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<div id="followerBox">Follower<br>
-			<% for(Utente following : utente.getFollowing()) { %>
+			<div id="followerBox">Following<br>
+			<% for(Utente following : utentePage.getFollowing()) { %>
 				<%=following.getUsername()%><br>
 				<% } %>
 			</div>
 		</td>
 		<td>
 			<div id="myTutoBox">
-				<% for(Tuto tuto : utente.getTuto()) { %>
+				<% for(Tuto tuto : utentePage.getTuto()) { %>
 				<%@ include file="templates/tuto.html"%>
 				<% } %>
 			</div>
