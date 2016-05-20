@@ -22,11 +22,11 @@ public class LastTuto extends HttpServlet{
 
 		List<Tuto> lastTuto = Facade.getLastTuto();
 		
-		request.setAttribute("lastTuto", lastTuto);
+		request.setAttribute("listTuto", lastTuto);
 		
 		System.out.println(lastTuto.size());
 				
-		String nextPage = "/lastTuto.jsp";
+		String nextPage = "/listTuto.jsp";
 		ServletContext application = getServletContext();		
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);		
 		rd.forward(request, response);

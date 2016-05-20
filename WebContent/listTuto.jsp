@@ -6,7 +6,7 @@ import="java.util.List"%>
 
 <script src="js/tuto.js"></script>
 
-<% List<Tuto> lastTuto = (List) request.getAttribute("lastTuto"); %>
-<%for(Tuto tuto:lastTuto){%>
+<% List<Tuto> listTuto = (List) request.getAttribute("listTuto"); %>
+<%for(Tuto tuto:listTuto){%>
 	<%@ include file="templates/tuto.html" %>
 <%} %>
