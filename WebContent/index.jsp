@@ -39,7 +39,7 @@
 					<col width="50%">
 					<col width="30%">
 					<tr>
-						<td style="text-align:left; padding-left: 25px;"><h1>easyTuto</h1></td>
+						<td style="text-align:left; padding-left: 25px;"><form action="index.jsp"><h1>easyTuto</h1></form></td>
 						<td>
 							<div id="searchBox">
 								<form class="profileBoxForm" action="search">
@@ -89,6 +89,11 @@
 										<td style="text-align: right;">
 											<form class="profileBoxForm" >
 												<input class="profileBoxFormInput" type="button" value="<%=utente.getUsername() %>" id="personalPage">
+											</form>
+										</td>
+										<td style="text-align: right;">
+											<form class="profileBoxForm" action="compileTuto.jsp">
+												<input class="profileBoxFormInput" type="button" value="Compila Tuto" >
 											</form>
 										</td>
 									</tr>
