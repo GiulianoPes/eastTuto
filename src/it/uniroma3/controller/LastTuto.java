@@ -18,13 +18,18 @@ import it.uniroma3.persistence.TutoDao;
 @WebServlet("/lastTuto")
 public class LastTuto extends HttpServlet{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
 
 		List<Tuto> lastTuto = Facade.getLastTuto();
 		
 		request.setAttribute("listTuto", lastTuto);
 		
-		System.out.println(lastTuto.size());
+		//System.out.println("--------------------------------------------------------sono la servlet"+lastTuto.size());
 				
 		String nextPage = "/listTuto.jsp";
 		ServletContext application = getServletContext();		
