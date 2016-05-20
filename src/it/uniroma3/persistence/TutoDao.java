@@ -121,8 +121,10 @@ public class TutoDao implements DAO<Tuto>{
 		return lastTuto;
 	}
 	
-	public List<Tuto> findTutoByCategoria(Categoria categoria){
-		EntityTransaction tx = this.em.getTransaction();	
+	public List<Tuto> findTutoByCategoria(String nomeCategoria){
+		EntityTransaction tx = this.em.getTransaction();
+		CategoriaDao categoriaDao = new CategoriaDao(em);
+		Categoria categoria = categoriaDao.findByName(nomeCategoria);
 		
 		Query query = this.em.createQuery("from Categoria c where c.categoria_id=:p");
 		query.setParameter("p", categoria.getId());

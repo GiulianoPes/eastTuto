@@ -36,7 +36,7 @@ public class AddTuto extends HttpServlet {
 
 		
 		if(nomeCategoria != null){
-			System.out.println("----------------------------"+nomeCategoria);
+			//System.out.println("----------------------------"+nomeCategoria);
 
 			Categoria categoria = Facade.getCategoria(nomeCategoria);		
 
