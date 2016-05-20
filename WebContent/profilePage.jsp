@@ -7,7 +7,6 @@
 
 <link rel="stylesheet" href="css/style_personal.css">
 
-<link rel="stylesheet" href="css/style_tuto.css">
 
 </head>
 <% Utente utentePage = (Utente) request.getAttribute("Utente");

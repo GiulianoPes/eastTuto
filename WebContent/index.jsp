@@ -94,7 +94,7 @@
 										</td>
 										<td style="text-align: right;">
 											<form class="profileBoxForm" action="compileTuto.jsp">
-												<input class="profileBoxFormInput" type="button" value="+" >
+												<input class="profileBoxFormInput" type="submit" value="+" >
 											</form>
 										</td>
 									</tr>
