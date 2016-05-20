@@ -11,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 @Entity
 public class Tuto {
@@ -30,11 +32,11 @@ public class Tuto {
 	@Temporal(TemporalType.DATE)
     private Date dataCreazione;
 	
-	@ManyToOne(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
+	@ManyToOne(cascade = {CascadeType.DETACH} ,fetch = FetchType.EAGER)
     @JoinColumn(name = "utente_id", referencedColumnName = "id")
-	private Utente utente;
-
-	@ManyToOne(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
+	private Utente utente;	
+	
+	@ManyToOne(cascade = {CascadeType.DETACH} ,fetch = FetchType.EAGER)
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
 	private Categoria categoria;
 
@@ -45,7 +47,7 @@ public class Tuto {
 		this.descrizione =  descrizione;
 		this.dataCreazione = dataCreazione;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -77,20 +79,20 @@ public class Tuto {
 	public void setDataCreazione(Date dataCreazione) {
 		this.dataCreazione = dataCreazione;
 	}
+	
+	public Utente getUtente(){
+		return this.utente;
+	}
 
 	public void setUtente(Utente utente){
 		this.utente = utente;
 	}
 	
-	public Utente getUtente(){
-		return this.utente;
+	public Categoria getCategoria(){
+		return this.categoria;
 	}
 	
 	public void setCategoria(Categoria categoria){
 		this.categoria = categoria;
-	}
-	
-	public Categoria getCategoria(){
-		return this.categoria;
 	}
 }

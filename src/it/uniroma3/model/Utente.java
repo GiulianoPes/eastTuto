@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -25,22 +26,25 @@ public class Utente {
 	@Column(nullable = false)
 	private String password;
 	
-	@OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "utente_id")
 	private List<Tuto> tuto;
-
-	@OneToMany(cascade = {CascadeType.ALL},fetch= FetchType.EAGER)
-    @JoinColumn(name = "utente_id")
-	private List<Categoria> categorie;
-
+	
+	//Following
+	@ManyToMany(cascade = {CascadeType.DETACH}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "utente_id", referencedColumnName = "id")
+	private List<Utente> following;
+	
 	public Utente(){
 		this.tuto = new ArrayList<>();
+		this.following = new ArrayList<>(); 
 	}
 	
 	public Utente(String username,String password){
 		this.username = username;
 		this.password = password;
 		this.tuto = new ArrayList<>();
+		this.following = new ArrayList<>(); 
 	}
 	
 	public Long getId() {
@@ -62,15 +66,16 @@ public class Utente {
 		this.password = password;
 	}
 	
+	//Lista dei Tuto
 	public void addTuto(Tuto tuto){
 		this.tuto.add(tuto);
+	}	
+
+	public List<Tuto> getTuto() {
+		return this.tuto;
 	}
 	
-	public List<Tuto> getTuto() {
-		return tuto;
-	}
-
-	public void setTuto(List<Tuto> tuto) {
-		this.tuto = tuto;
+	public void addFollowing(Utente utente){
+		this.following.add(utente);
 	}
 }
