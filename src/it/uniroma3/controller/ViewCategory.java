@@ -1,6 +1,7 @@
 package it.uniroma3.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.PersistenceException;
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 
 import it.uniroma3.dialog.Dialog;
+import it.uniroma3.model.Categoria;
+import it.uniroma3.model.Tuto;
 import it.uniroma3.model.Utente;
 
 @WebServlet("/viewCategory")
@@ -23,9 +26,12 @@ public class ViewCategory extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 		
-		String nextPage = "/lastTuto.jsp";
-		
-		
+		String nextPage = "/listTuto.jsp";
+		String nomeCategoria = request.getParameter("nome");
+		Categoria categoria = Facade.getCategoria(nomeCategoria);
+		List<Tuto> listTuto = categoria.getTuto();	
+		request.setAttribute("listTuto", listTuto);
+		System.out.println("-----------------"+listTuto.size());
 		
 		ServletContext application = getServletContext();		
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);		
