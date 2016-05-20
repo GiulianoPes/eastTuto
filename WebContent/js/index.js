@@ -29,6 +29,9 @@ $('body').ready(function(){
 			location.hash = $("#personalPage").attr("value");
 		}});
 	});
+	$('#easyTutoLogo').click(function(event){
+		 window.location.href='';
+	});
 
 
 

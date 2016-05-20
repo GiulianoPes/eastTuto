@@ -24,7 +24,7 @@
 		<td colspan="3">
 			<div id="personalUpperBox">
 				<h1><%=utentePage.getUsername() %>'s world</h1>
-				<% if(!utentePage.getUsername().equals(currentUtente.getUsername())){ %>
+				<% if((currentUtente!=null) && (!utentePage.getUsername().equals(currentUtente.getUsername()))){ %>
 				<div>
 					<input class="profileBoxFormInput" type="button" value="+Follow+" id="follow">
 				</div>

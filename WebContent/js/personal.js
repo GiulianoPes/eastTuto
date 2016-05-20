@@ -19,7 +19,6 @@ $('body').ready(function(){
 
 		}});
 
-		alert(userName);
 	});
 
 

@@ -1,27 +1,37 @@
 
-<link rel="stylesheet" href="css/style_tuto.css">
-<div class="myTuto">
-	<table class="myTutoTable">
-		<col width="20%">
-		<col width="70%">
-		<col width="10%">
-		<tr>
-			<td class="myTutoImage"><img src="img/tuto1.jpg" width="100px"
-				height="100px" /></td>
-			<td>
-				<ul class="myTutoDetails">
-					<li>Nome tuto: <b><%= tuto.getNome() %></b></li>
-					<li>Descrizione: <b><%= tuto.getDescrizione() %></b></li>
-					<li>Data di creazione: <b><%= tuto.getDataCreazione() %> </b></li>
-				</ul>
-			</td>
-			<td class="myTutoOptions">
-				<ul style="list-style: none;">
-					<li><img src="img/icon32/magnifying-glass.png" width="32px" height="32px" title="Dettagli" /></li>
-					<li><img src="img/icon32/pencil.png" width="32px" height="32px" title="Modifica" /></li>
-					<li><img src="img/icon32/trash.png" width="32px" height="32px" title="Elimina" />:</li>
-				</ul>
-			</td>
-		</tr>
-	</table>
-</div>
+<center>
+	<div class="myTuto" id="<%= tuto.getId()%>">
+		<table class="myTutoTable">
+			<col width="20%">
+			<col width="70%">
+			<col width="10%">
+			<tr>
+				<td class="userImg">
+					<img src="img/tuto1.jpg" width="50px"height="50px" />
+				</td>
+				<td>
+					<h3><b><div class="tutoOwner" id="<%= tuto.getUtente().getUsername()%>"><%= tuto.getUtente().getUsername()%></div></b></h3>
+					<h6><%= tuto.getDataCreazione() %></h6>
+				</td>
+				<td class="myTutoOptions">
+					<ul style="list-style: none;">
+						<li><img src="img/icon32/magnifying-glass.png" width="16px"
+							height="16px" title="Dettagli" /></li>
+						<li><img src="img/icon32/pencil.png" width="16px"
+							height="16px" title="Modifica" /></li>
+						<li><img src="img/icon32/trash.png" width="16px"
+							height="16px" title="Elimina" />:</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<ul class="myTutoDetails">
+						<li> <h4><b><%= tuto.getNome() %></b></h4></li>
+						<li> <h5><b><%= tuto.getDescrizione() %></b></h5></li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+</center>

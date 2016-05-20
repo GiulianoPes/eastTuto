@@ -1,12 +1,22 @@
 .myTuto {
+	margin-top:10px;	
 	padding: 10px;
 	background-color:white;
 	width: 500px;
+	-moz-box-shadow: 1px 1px 1px #165346;
+	-webkit-box-shadow: 1px 1px 1px #165346;
+	box-shadow: 1px 1px 1px #165346;
+	color: black;
+	cursor: pointer;
+	z-index: 1;
 }
-
+.myTuto:hover{
+	-moz-box-shadow: 2px 2px 1px #165346;
+	-webkit-box-shadow: 2px 2px 1px #165346;
+	box-shadow: 2px 2px 1px #165346;
+}
 .myTutoTable {
 	width: 100%;
-	border: solid;
 }
 
 .myTutoImage {
@@ -21,3 +31,14 @@
 .myTutoOptions {
 	text-align: right;
 }
+.tutoOwner{
+	width: 100px;
+	z-index: 3;
+}
+.tutoOwner:hover{
+	color:blue;
+	text-decoration: underline;
+}
+.userImg{
+	
+})

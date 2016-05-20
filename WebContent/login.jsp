@@ -18,6 +18,7 @@
 					<input type="submit" id="login-button" value="Login">
 				</form>		
 		</div>
+		<div class="bubble">
 		<ul class="bg-bubbles">
 			<li></li>
 			<li></li>
@@ -30,6 +31,7 @@
 			<li></li>
 			<li></li>
 		</ul>
+	</div>
 	</div>
     <script src="js/index.js"></script>    
   </body>
