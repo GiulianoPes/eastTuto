@@ -12,9 +12,11 @@
 	Tuto tuto = (Tuto)session.getAttribute("Tuto");
 %>
 <body>
-Nome: <%= tuto.getNome() %>
-Categoria: <%= tuto.getCategoria() %>
-Data Creazione: <%= tuto.getDataCreazione() %>
-Descrizione: <%= tuto.getDescrizione()  %>
+<center>
+	<h2>Nome: <b><%= tuto.getNome() %></b></h2>
+	<h2>Categoria: <b><%= tuto.getCategoria().getNome() %></b></h2>
+	<h2>Data Creazione: <b><%= tuto.getDataCreazione() %></b></h2>
+	<h2>Descrizione: <b><%= tuto.getDescrizione()  %></b></h2>
+</center>
 </body>
 </html>
