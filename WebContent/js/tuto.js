@@ -1,6 +1,16 @@
 $('.myTuto').click(function(event){
 	tuto_id = $(this).attr("id");
-	alert(tuto_id);
+	tuto_id = Number(tuto_id);
+	//alert(tuto_id);
+	$.ajax({
+		url: 'tutoDetails', 
+		type: 'post', 
+		data: 'tutoId='+tuto_id, 
+		success: function(result){
+			//location.hash = userName;
+			$(".container").html(result);
+		}
+	});
 });
 
 $('.tutoOwner').click(function(event){

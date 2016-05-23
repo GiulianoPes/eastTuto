@@ -64,6 +64,7 @@ public class Facade {
 		UtenteDao utenteDao = new UtenteDao(em);
 		return utenteDao.getTuto(utente);
 	}
+	
 	public static Utente findUtenteByUsername(String username){
 		em = emf.createEntityManager();
 		UtenteDao utenteDao = new UtenteDao(em);
@@ -74,15 +75,27 @@ public class Facade {
 			return null;
 		}
 	}
+	
 	public static void addFollowing(Utente currentUser, Utente following){
 		em = emf.createEntityManager();
 		UtenteDao utenteDao = new UtenteDao(em);
 		currentUser.addFollowing(following);
 		utenteDao.update(currentUser);
 	}
+	
 	public static List<Categoria> getCategorie(){
 		em = emf.createEntityManager();
 		CategoriaDao categoriaDao = new CategoriaDao(em);
 		return categoriaDao.getCategorie();
+	}
+	
+	/*
+	 * @Params tutoId (Long)
+	 * @return Tuto
+	 */
+	public static Tuto getTutoFromId(Long tutoId) {
+		em = emf.createEntityManager();
+		TutoDao tutoDao = new TutoDao(em);
+		return tutoDao.findById(tutoId);
 	}
 }
