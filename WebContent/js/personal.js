@@ -18,10 +18,7 @@ $('body').ready(function(){
 			$('#follow').val("- following -");
 
 		}});
-
+		
 	});
-
-
-
-
+	
 });

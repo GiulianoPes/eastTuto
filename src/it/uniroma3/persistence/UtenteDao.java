@@ -76,7 +76,13 @@ public class UtenteDao implements DAO<Utente>{
 	}
 
 	@Override
-	public List<Utente> findAll() {
+	public List<Utente> findAll() {/*
+		Query query = this.em.createQuery("from Utente");
+		List list = query.getResultList();		
+		this.em.close();	
+		
+		return list;*/
+		
 		List<Utente> result = em.createNamedQuery("Utente.findAll").getResultList();
 		this.em.close();
 		return result;
@@ -126,7 +132,7 @@ public class UtenteDao implements DAO<Utente>{
 	
 	public Utente findByCredentials(String username, String password){
 		Utente utente = null;
-		EntityTransaction tx = this.em.getTransaction();	
+		//EntityTransaction tx = this.em.getTransaction();	
 		
 		Query query = this.em.createQuery("from Utente u where u.username=:u and u.password=:p");
 		query.setParameter("u", username);
@@ -157,9 +163,22 @@ public class UtenteDao implements DAO<Utente>{
 		this.em.close();		
 		return listTuto;
 	}
+	
 	public void addFollowing(Utente currentUser, Utente following){
 		currentUser.addFollowing(following);
 		this.update(currentUser);	
 
+	}
+	
+	public boolean isFollowing(Utente utenteCorrente,Utente utentePagina){
+		
+		Query query = this.em.createQuery("from utentesegue u where u.utente_id=:idc and u.following_id=:idp");
+		query.setParameter("idc", utenteCorrente.getId());
+		query.setParameter("idp", utentePagina.getId());
+		List listFollowing = query.getResultList();
+		
+		this.em.close();	
+		
+		return !listFollowing.isEmpty();
 	}
 }

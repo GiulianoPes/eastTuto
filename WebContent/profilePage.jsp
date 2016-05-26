@@ -1,3 +1,4 @@
+<%@page import="it.uniroma3.controller.Facade"%>
 <head>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" 
@@ -14,8 +15,8 @@
 
 
 </head>
-<% Utente utentePage = (Utente) request.getAttribute("Utente");
-	Utente currentUtente = (Utente) session.getAttribute("Utente");
+<% Utente utentePagina = (Utente) request.getAttribute("Utente");
+	Utente utenteCorrente = (Utente) session.getAttribute("Utente");
 %>
 <script src="js/personal.js"></script>
 
@@ -28,11 +29,15 @@
 	<tr>
 		<td colspan="3">
 			<div id="personalUpperBox">
-				<h1><%=utentePage.getUsername() %>'s world</h1>
-				<% if((currentUtente!=null) && (!utentePage.getUsername().equals(currentUtente.getUsername()))){ %>
-				<div>
-					<input class="profileBoxFormInput" type="button" value="+Follow+" id="follow">
-				</div>
+				<h1><%=utentePagina.getUsername() %>'s world</h1>
+				<% if((utenteCorrente!=null) && (!utentePagina.getUsername().equals(utenteCorrente.getUsername()))){ %>
+					<%String seguo = "Follow";%>
+					<%System.out.println(utenteCorrente.isFollowing(utentePagina)); %>
+					<%System.out.println(utenteCorrente.getFollowing().toString()); %>
+					<%if(utenteCorrente.isFollowing(utentePagina)){ seguo = "Following";System.out.println("+++++++++Following");}%>					
+					<div>
+						<input class="profileBoxFormInput" type="button" value=<%=seguo %> id="follow">
+					</div>	
 				<%} %>
 			</div>
 		</td>
@@ -40,14 +45,14 @@
 	<tr>
 		<td>
 			<div id="followerBox">Following<br>
-			<% for(Utente following : utentePage.getFollowing()) { %>
+			<% for(Utente following : utentePagina.getFollowing()) { %>
 				<%@ include file="templates/follower.html"%>
 				<% } %>
 			</div>
 		</td>
 		<td>
 			<div id="myTutoBox">
-				<% for(Tuto tuto : utentePage.getTuto()) { %>
+				<% for(Tuto tuto : utentePagina.getTuto()) { %>
 				<%@ include file="templates/tuto.html"%>
 				<% } %>
 			</div>

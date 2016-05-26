@@ -1,7 +1,12 @@
 package it.uniroma3.model;
 
+import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Resource;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,12 +15,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.mapping.PrimaryKey;
+
+import com.oracle.webservices.internal.api.message.PropertySet.Property;
+import com.sun.org.glassfish.gmbal.NameValue;
 
 @Entity
 public class Utente {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long id;
@@ -32,19 +48,20 @@ public class Utente {
 	
 	//Following
 	@ManyToMany(cascade = {CascadeType.DETACH}, fetch = FetchType.EAGER)
+	@JoinTable(name = "utenteSegue")
 	@JoinColumn(name = "utente_id", referencedColumnName = "id")
-	private List<Utente> following;
+	private Set<Utente> following;
 	
 	public Utente(){
 		this.tuto = new ArrayList<>();
-		this.following = new ArrayList<>(); 
+		this.following = new HashSet<>(); 
 	}
 	
 	public Utente(String username,String password){
 		this.username = username;
 		this.password = password;
 		this.tuto = new ArrayList<>();
-		this.following = new ArrayList<>(); 
+		this.following = new HashSet<>(); 
 	}
 	
 	public Long getId() {
@@ -83,12 +100,30 @@ public class Utente {
 		this.following.add(utente);
 	}
 
-	public List<Utente> getFollowing() {
+	public Set<Utente> getFollowing() {
 		return following;
 	}
 
-	public void setFollowing(List<Utente> following) {
+	public void setFollowing(Set<Utente> following) {
 		this.following = following;
 	}
 	
+	public boolean isFollowing(Utente utente){
+		return this.following.contains(utente);
+	}	
+	
+	public String toString(){
+		return this.getId()+" - "+this.getUsername();
+	}
+
+	@Override
+	public int hashCode() {
+		return this.getId().hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Utente utente = (Utente) obj;
+		return this.getId().equals(utente.getId());
+	}	
 }
