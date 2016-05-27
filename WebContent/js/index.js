@@ -1,4 +1,3 @@
-
 $('body').ready(function(){
 
 	userNameHash = location.hash;

@@ -44,7 +44,6 @@
 					<td style="text-align: left; padding-left: 25px;">
 						<div id="easyTutoLogo">
 							<h1>easyTuto</h1>
-							</a>
 						</div>
 					</td>
 					<td>
@@ -53,8 +52,7 @@
 								<table>
 									<tr>
 										<td><input id="searchBar" type="text" name="searchValure"></td>
-										<td><input class="profileBoxFormInput" type="button"
-											value="cerca"></td>
+										<td><input class="profileBoxFormInput" type="button" value="cerca"></td>
 									</tr>
 								</table>
 							</form>
@@ -95,8 +93,7 @@
 									</td>
 									<td style="text-align: right;">
 										<form class="profileBoxForm" action="logoutUser" method="post">
-											<input class="profileBoxFormInput" type="submit"
-												value="logout">
+											<input class="profileBoxFormInput" type="submit" value="logout">
 										</form>
 									</td>
 									<td style="text-align: right;">
@@ -112,9 +109,7 @@
 									</td>
 								</tr>
 							</table>
-						</div> <%
- 	}
- %>
+						</div> <%}	 %>
 					</td>
 				</tr>
 			</table>
