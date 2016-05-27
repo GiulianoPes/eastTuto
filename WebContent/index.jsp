@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="js/jquery.js"></script>
 
 <link rel="stylesheet" href="css/style_home.css">
 <title>easyTuto</title>
