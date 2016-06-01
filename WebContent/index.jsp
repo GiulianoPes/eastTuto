@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="it.uniroma3.model.Utente"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -29,11 +31,6 @@
 			</ul>
 		</div>
 	</div>
-
-	<%
-		Utente utente = (Utente) session.getAttribute("Utente");
-	%>
-
 	<div id="header">
 		<center>
 			<table style="width: 100%;">
@@ -59,9 +56,7 @@
 						</div>
 					</td>
 					<td style="text-align: right;">
-						<%
-							if (utente == null) {
-						%>
+						<c:if test="${empty utenteLogged}">
 						<div id="userProfileBox">
 							<table>
 								<tr>
@@ -80,26 +75,29 @@
 									</td>
 								</tr>
 							</table>
-						</div> <%
- 						} else {
-						 %>
+						</div> 
+						 </c:if>
+						 <c:if test="${not empty utenteLogged}">
+						 
 						<div id="userProfileBox">
 							<table>
 								<tr>
 									<td style="text-align: right;">
 										<div style="postion: absolute;">
-											<%="ciao " + utente.getUsername()%>
+											
 										</div>
 									</td>
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="logoutUser" method="post">
-											<input class="profileBoxFormInput" type="submit" value="logout">
-										</form>
+									<f:view>
+										<h:form>
+											<h:commandButton value="logout"  action="#{sessionController.logout}"/>
+										</h:form>
+									</f:view>
 									</td>
 									<td style="text-align: right;">
 										<form class="profileBoxForm" action="viewMyTuto">
 											<input class="profileBoxFormInput" type="button"
-												value="<%=utente.getUsername()%>" id="personalPage">
+												value="${utenteLogged.username }" id="personalPage">
 										</form>
 									</td>
 									<td style="text-align: right;">
@@ -109,7 +107,9 @@
 									</td>
 								</tr>
 							</table>
-						</div> <%}	 %>
+						</div> 
+						<!-- } -->
+						</c:if>
 					</td>
 				</tr>
 			</table>

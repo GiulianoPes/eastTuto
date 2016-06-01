@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 public class Categoria {
@@ -21,8 +20,6 @@ public class Categoria {
 	private Long id;
 	@Column(unique = true)
 	private String nome;
-	@Column
-	private String descrizione; 
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "categoria_id")
@@ -32,9 +29,8 @@ public class Categoria {
 		this.tuto = new ArrayList<>();
 	}
 	
-	public Categoria(String nome, String descrizione){
+	public Categoria(String nome){
 		this.nome = nome;
-		this.descrizione = descrizione;
 		this.tuto = new ArrayList<>();
 	}
 
@@ -52,14 +48,6 @@ public class Categoria {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getDescrizione() {
-		return descrizione;
-	}
-
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
 	}
 
 	public List<Tuto> getTuto() {

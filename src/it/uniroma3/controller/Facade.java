@@ -149,7 +149,7 @@ public class Facade {
 		Utente utente1 = new Utente("Fabio", "f");
 		Utente utente2 = new Utente("Giuliano", "g");
 		Utente utente3 = new Utente("Vittorio", "v");
-
+		/*
 		Categoria categoria1 = new Categoria("INFORMATICA", "INF");
 		Categoria categoria2 = new Categoria("ELETTRONICA", "ELE");
 		Categoria categoria3 = new Categoria("MECCANICA", "MEC");
@@ -179,7 +179,7 @@ public class Facade {
 		uD3.update(utente1);
 		uD4.update(utente2);
 		
-		
+		*/
 		//Test (Non cancellare)
 		/*
 		utente1.addFollowing(utente2);//Fabio segue Giuliano;
