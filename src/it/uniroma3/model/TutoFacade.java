@@ -8,6 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
 
 @Stateless
 public class TutoFacade {
@@ -44,7 +48,22 @@ public class TutoFacade {
 		List<Tuto> result = em.createNamedQuery("Tuto.findAll").getResultList();
 		return result;
 	}
-
+	
+	public List<Tuto> getTutoFromUtente(Utente utente){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Tuto> cq = cb.createQuery(Tuto.class);//Riporta dei tuto
+		Root rootTuto = cq.from(Tuto.class);//Tabella dei tuto
+		
+		/*
+		ParameterExpression<Long> parameter = cb.parameter(Long.class);//
+		parameter.alias(utente.getId().toString());       
+		*/
+		cq.where(cb.equal(rootTuto.get("utente_id"), utente.getId()));
+        
+        List<Tuto> listaTuto = em.createQuery(cq).getResultList();
+		return listaTuto;
+	}
+	/*
 	public List<Tuto> findByParameter(String parameter1, String column1, String parameter2, String column2){	
 		Query query = em.createQuery("from Tuto t where t.c1=:p1 and t.c2=:p2");
 		query.setParameter("p1", parameter1);
@@ -63,4 +82,5 @@ public class TutoFacade {
 		
 		return list;
 	}
+	*/
 }

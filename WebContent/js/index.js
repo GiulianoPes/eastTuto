@@ -42,8 +42,10 @@ $('body').ready(function(){
 		});
 	});
 	
+	/*
 	$('#easyTutoLogo').click(function(event){
 		 window.location.href='';
 	});
+	*/
 	
 });

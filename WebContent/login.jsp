@@ -14,8 +14,7 @@
 			<h1>Welcome</h1>
 			<f:view>
 				<h:form>
-				<div>Username: <h:inputText value="#{sessionController.username}"	
-					 
+				<div>Username: <h:inputText value="#{sessionController.username}"						 
                      required="true"
                      requiredMessage="username obbligatorio"
                      id="username" /> <h:message for="username" />
@@ -26,7 +25,7 @@
                      id="password" /> <h:message for="password" />
 				</div>
 				<div>
-					<h:commandButton value="Submit"  action="#{sessionController.login}"/>
+					<h:commandButton value="Login"  action="#{sessionController.login}"/>
 				</div>		
 				</h:form>
 			</f:view>

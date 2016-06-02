@@ -1,6 +1,7 @@
 package it.uniroma3.controller;
 
-import java.util.Date;
+import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -9,7 +10,6 @@ import javax.faces.bean.ManagedProperty;
 
 import it.uniroma3.model.Categoria;
 import it.uniroma3.model.CategoriaFacade;
-import it.uniroma3.model.Tuto;
 
 @ManagedBean
 public class CategoriaController {
@@ -17,10 +17,10 @@ public class CategoriaController {
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String nome;
-	private String descrizione;
 	
 	private Categoria categoria;
 	private List<Categoria> categorie;
+	//private List<String> listaNomiCategorie;
 	
 	@EJB
 	private CategoriaFacade categoriaFacade;
@@ -31,10 +31,63 @@ public class CategoriaController {
 		return this.categoria; 
 	}
 	
+	public String initCategorie(){
+		this.categorie = categoriaFacade.findAll();
+		System.out.println(this.categorie.toString());
+		return "compileTuto";
+	}
+	
 	public List<Categoria> getCategorie(){
 		this.categorie = categoriaFacade.findAll();
 		return this.categorie;
 	}
 	
+	/*
+	public String initCategorie(){
+		List<String> listaNomiCategorie = new ArrayList<String>();
+		for (String nomeCategoria : listaNomiCategorie) {
+			listaNomiCategorie.add(nomeCategoria);
+			System.out.println("-------------------"+nomeCategoria);
+		}
+		this.listaNomiCategorie = listaNomiCategorie;
+		return "compileTuto";
+	}*/
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setCategorie(List<Categoria> categorie) {
+		this.categorie = categorie;
+	}
+
+	/*
+	public List<String> getListaNomiCategorie() {
+		return listaNomiCategorie;
+	}
+
+	public void setListaNomiCategorie(List<String> listaNomiCategorie) {
+		this.listaNomiCategorie = listaNomiCategorie;
+	}	
+	*/
 }

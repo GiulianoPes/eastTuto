@@ -137,9 +137,6 @@ public class Facade {
 		cD1 = new CategoriaDao(emf.createEntityManager());
 		cD2 = new CategoriaDao(emf.createEntityManager());
 		cD3 = new CategoriaDao(emf.createEntityManager());
-		
-		
-		
 
 		//Creo gli oggetti
 		Tuto tuto1 = new Tuto("JAVA", "A", new Date(System.currentTimeMillis()));

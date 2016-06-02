@@ -86,4 +86,8 @@ public class Categoria {
 			return false;
 		return true;
 	}	
+	
+	public String toString(){
+		return this.getNome();
+	}
 }

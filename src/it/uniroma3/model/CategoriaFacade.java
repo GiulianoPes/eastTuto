@@ -7,6 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
 
 @Stateless
 public class CategoriaFacade {
@@ -33,10 +37,25 @@ public class CategoriaFacade {
 	}
 
 	public List<Categoria> findAll() {
-		List<Categoria> result = em.createNamedQuery("Categoria.findAll").getResultList();
+		//List<Categoria> result = em.createNamedQuery("Categoria.findAll").getResultList();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Categoria> cq = cb.createQuery(Categoria.class);	
+		Root rootCategoria = cq.from(Categoria.class);
+        List<Categoria> result = em.createQuery(cq).getResultList();
 		return result;
 	}
-
+	
+	public Categoria findByName(String nomeCategoria){		
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Categoria> cq = cb.createQuery(Categoria.class);	
+		Root root = cq.from(Categoria.class);
+		cq.where(cb.equal(root.get("nome"), nomeCategoria));
+        List<Categoria> result = em.createQuery(cq).getResultList();        
+		Categoria categoria = result.get(0);
+		return categoria;
+	}
+	
+	/*
 	public List<Categoria> findByParameter(String parameter1, String column1, String parameter2, String column2){
 		
 		Query query = em.createQuery("from Categoria t where t.c1=:p1 and t.c2=:p2");
@@ -56,4 +75,5 @@ public class CategoriaFacade {
 		List<Categoria> list = query.getResultList();
 		return list;
 	}
+	*/
 }

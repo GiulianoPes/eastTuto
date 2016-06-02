@@ -76,9 +76,8 @@
 								</tr>
 							</table>
 						</div> 
-						 </c:if>
-						 <c:if test="${not empty utenteLogged}">
-						 
+						</c:if>
+						<c:if test="${not empty utenteLogged}">						 
 						<div id="userProfileBox">
 							<table>
 								<tr>
@@ -101,14 +100,15 @@
 										</form>
 									</td>
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="addTuto" method="post">
-											<input class="profileBoxFormInput" type="submit" value="+">
-										</form>
+									<f:view>
+										<h:form >
+											<h:commandButton value="+" type="submit" action="#{categoriaController.initCategorie}"/>										
+										</h:form>
+									</f:view>
 									</td>
 								</tr>
 							</table>
 						</div> 
-						<!-- } -->
 						</c:if>
 					</td>
 				</tr>

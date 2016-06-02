@@ -94,4 +94,9 @@ public class Tuto {
 	public void setCategoria(Categoria categoria){
 		this.categoria = categoria;
 	}
+	
+	public String toString(){
+		return this.getId()+" - "+this.getNome();
+	}
 }
+
