@@ -1,13 +1,9 @@
 package it.uniroma3.controller;
 
-import java.util.ArrayList;
-
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-
 import it.uniroma3.model.Categoria;
 import it.uniroma3.model.CategoriaFacade;
 
@@ -20,7 +16,6 @@ public class CategoriaController {
 	
 	private Categoria categoria;
 	private List<Categoria> categorie;
-	//private List<String> listaNomiCategorie;
 	
 	@EJB
 	private CategoriaFacade categoriaFacade;
@@ -41,17 +36,6 @@ public class CategoriaController {
 		this.categorie = categoriaFacade.findAll();
 		return this.categorie;
 	}
-	
-	/*
-	public String initCategorie(){
-		List<String> listaNomiCategorie = new ArrayList<String>();
-		for (String nomeCategoria : listaNomiCategorie) {
-			listaNomiCategorie.add(nomeCategoria);
-			System.out.println("-------------------"+nomeCategoria);
-		}
-		this.listaNomiCategorie = listaNomiCategorie;
-		return "compileTuto";
-	}*/
 
 	public Long getId() {
 		return id;
