@@ -32,13 +32,13 @@
 	<tr>
 		<td colspan="3">
 			<div id="personalUpperBox">
-				<h1>${utenteController.username }</h1>
+				<h1>Ciao ${utenteController.username }</h1>
 				<c:if test="${(not empty utenteLogged) && (utenteLogged!=utenteController.utente)}">
 				<c:set var="seguo" value="Follow"></c:set>
 					<c:if test="${utenteLogged.isFollowing(utenteController.utente)}">
 					<c:set var="seguo" value="Following"></c:set>									
 						<div>
-							<input class="profileBoxFormInput" type="button" value="#{seguo}" id="follow">
+							<input class="profileBoxFormInput" type="button" value="<c:out value="$(seguo)"/>" id="follow">
 						</div>	
 					</c:if>
 				</c:if>
@@ -48,16 +48,16 @@
 	<tr>
 		<td>
 			<div id="followerBox">Following<br>
-			<% for(Utente following : utentePagina.getFollowing()) { %>
-				<%@ include file="templates/follower.html"%>
-				<% } %>
+				<c:forEach items="${utenteController.utente.following}" var="following">
+        			<%@ include file="templates/follower.html"%>
+				</c:forEach>
 			</div>
 		</td>
 		<td>
 			<div id="myTutoBox">
-				<% for(Tuto tuto : utentePagina.getTuto()) { %>
-				<%@ include file="templates/tuto.html"%>
-				<% } %>
+				<c:forEach items="${utenteController.utente.tuto}" var="tuto">
+        			<%@ include file="templates/tuto.html"%>
+				</c:forEach>
 			</div>
 		</td>
 		<td>
