@@ -3,7 +3,6 @@ $('body').ready(function(){
 	userNameHash = location.hash;
 	userName = location.hash.substring(1,userNameHash.size);
 
-
 	if(userName!=""){
 		$.ajax({
 			url: 'getUser', 
@@ -18,7 +17,7 @@ $('body').ready(function(){
 			url: 'homeContent.jsp',
 			type: 'post',
 			success: function(result){
-				$(".container").html(result);
+				$("#container").html(result);
 			}
 		});
 	}
@@ -29,8 +28,9 @@ $('body').ready(function(){
 		$('form').fadeOut(500);
 		$('.wrapper').addClass('form-success');
 	});	
-	
+
 	$("#personalPage").click(function(event){
+		alert("ciao");
 		$.ajax({
 			url: 'getUser', 
 			type: 'post',
@@ -40,6 +40,7 @@ $('body').ready(function(){
 				location.hash = $("#personalPage").attr("value");
 			}
 		});
+		
 	});
 	
 	/*

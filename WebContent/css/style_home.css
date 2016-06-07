@@ -177,7 +177,7 @@ body :-ms-input-placeholder {
 	transform: translateY(85px);
 }
 
-.container {
+#container {
 	position: relative;
 	width: 900px;
 	margin: 0 auto;
@@ -188,7 +188,7 @@ body :-ms-input-placeholder {
 	overflow-x: hidden;
 }
 
-.container h1 {
+#container h1 {
 	font-size: 40px;
 	-webkit-transition-duration: 1s;
 	transition-duration: 1s;

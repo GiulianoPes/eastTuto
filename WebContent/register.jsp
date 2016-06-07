@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div class="container">
+		<div id="container">
 		<h1>Register</h1>
 		
 		<div>

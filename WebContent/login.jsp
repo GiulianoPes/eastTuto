@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div class="container">
+		<div id="container">
 			<h1>Welcome</h1>
 			<f:view>
 				<h:form>

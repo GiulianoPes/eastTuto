@@ -32,15 +32,16 @@
 	<tr>
 		<td colspan="3">
 			<div id="personalUpperBox">
-				<h1>Ciao ${utenteController.username }</h1>
-				<c:if test="${(not empty utenteLogged) && (utenteLogged!=utenteController.utente)}">
+				
+				<h1>${utenteController.utente.username }</h1>
+				<c:if test="${(not empty utenteLogged) && (utenteLogged==utenteController.utente)}">
 				<c:set var="seguo" value="Follow"></c:set>
 					<c:if test="${utenteLogged.isFollowing(utenteController.utente)}">
-					<c:set var="seguo" value="Following"></c:set>									
-						<div>
-							<input class="profileBoxFormInput" type="button" value="<c:out value="$(seguo)"/>" id="follow">
-						</div>	
+						<c:set var="seguo" value="Following"></c:set>									
 					</c:if>
+				<div>
+					<input class="profileBoxFormInput" type="button" value="<c:out value="$(seguo)"/>" id="follow">
+				</div>	
 				</c:if>
 			</div>
 		</td>
