@@ -58,6 +58,11 @@ public class TutoController{
 		return "index"; 
 	}
 	
+	public String initTuto(){
+		this.tutos = tutoFacade.findAll();
+		return "listTuto";
+	}
+	
 	public String getTutoFromUtente(){
 		this.tutos = tutoFacade.getTutoFromUtente(this.utente);
 		return "tutos";

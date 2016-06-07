@@ -44,6 +44,11 @@ public class UtenteController{
 		return this.utenti;
 	}
 	
+	public String myProfile(Long id){
+		this.utente = utenteFacade.findById(id);
+		return "profilePage";
+	}
+	
 	//Getter and setter
 
 	public Long getId() {

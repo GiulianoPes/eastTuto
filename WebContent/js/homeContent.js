@@ -11,7 +11,7 @@ $('body').ready(function(){
 		});
 	})
 	
-	$.ajax({
+	$.ajax({		
 		url: 'lastTuto', 
 		type: 'post',
 		success: function(result) {

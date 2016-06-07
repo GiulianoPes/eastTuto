@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,8 +20,9 @@ public class Categoria {
 	@Column(unique = true)
 	private String nome;
 	
+	//Una categoria può appartenere a molti tuto
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoria_id")
+    //@JoinColumn(name = "categoria_id")
 	private List<Tuto> tuto;
 	
 	public Categoria(){
@@ -49,7 +49,7 @@ public class Categoria {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
 	public List<Tuto> getTuto() {
 		return tuto;
 	}
@@ -69,23 +69,16 @@ public class Categoria {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
-
-	@Override
+	
+	//Se inserito, non carica le categorie quando si vuole compilare un tuto.
+	/*
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Categoria other = (Categoria) obj;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		return true;
+		Categoria c = (Categoria) obj;
+		System.out.println(this+" - "+c);
+		return this.getNome().equals(c.getNome());
 	}	
+	*/
+	
 	
 	public String toString(){
 		return this.getNome();

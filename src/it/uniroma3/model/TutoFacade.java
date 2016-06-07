@@ -2,15 +2,11 @@ package it.uniroma3.model;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 @Stateless
@@ -41,11 +37,15 @@ public class TutoFacade {
 	}
 
 	public void delete(Tuto tuto){
-		Tuto toRemove = em.merge(tuto);
+		//Tuto toRemove = 
+		em.merge(tuto);
 	}
 
-	public List<Tuto> findAll() {
-		List<Tuto> result = em.createNamedQuery("Tuto.findAll").getResultList();
+	public List<Tuto> findAll(){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Tuto> cq = cb.createQuery(Tuto.class);	
+		Root rootTuto = cq.from(Tuto.class);
+        List<Tuto> result = em.createQuery(cq).getResultList();
 		return result;
 	}
 	

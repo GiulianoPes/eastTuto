@@ -33,7 +33,8 @@ public class Utente {
 	
 	//Tuto
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "utente_id")
+	//@JoinTable(name = "utenteSegue")
+    //@JoinColumn(name = "utente_id")
 	private List<Tuto> tuto;	
 		
 	//Following

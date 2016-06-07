@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
@@ -23,11 +21,9 @@ public class UtenteFacade{
 		utente = this.findByCredentials(utente.getUsername(), utente.getPassword());
 		return utente;
 	}
-	public Utente save(String username, String passwort) {
-		Utente utente = new Utente(username,passwort);
-		//utente.setId(2L);
+	public Utente save(String username, String password) {
+		Utente utente = new Utente(username,password);
 		em.persist(utente);
-		//utente = this.findByCredentials(utente.getUsername(), utente.getPassword());
 		return utente;
 	}
 
@@ -46,36 +42,30 @@ public class UtenteFacade{
 	}
 
 	public List<Utente> findAll() {
-		List<Utente> result = em.createNamedQuery("Utente.findAll").getResultList();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Utente> cq = cb.createQuery(Utente.class);
+		Root<Utente> rootCategoria = cq.from(Utente.class);
+		System.out.println(cb+" - "+cq);
+		System.out.println(rootCategoria);
+		System.out.println("prima");
+        List<Utente> result = em.createQuery(cq).getResultList();
+        System.out.println("dopo");
 		return result;
 	}
 	
 	public Utente findByCredentials(String username, String password){
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Utente> cq = cb.createQuery(Utente.class);	
-		Root rootUtenti = cq.from(Utente.class);
+		Root<Utente> rootUtenti = cq.from(Utente.class);
 		ParameterExpression<String> parameter = cb.parameter(String.class);
 		parameter.alias(username);
-        //cq.select(rootUtenti).where(cb.gt(rootUtenti.get("username"), parameter));
         cq.where(cb.equal(rootUtenti.get("username"), username),cb.equal(rootUtenti.get("password"), password));
         List<Utente> list = em.createQuery(cq).getResultList();
+        
         Utente utente = null;
         if(!list.isEmpty()){
 			utente = list.get(0);
 		}
 		return utente; 
-		/*
-		Utente utente = null;		
-		Query query = em.createQuery("from Utente u where u.username=:u and u.password=:p");
-		query.setParameter("u", username);
-		query.setParameter("p", password);
-
-		List<Utente> list = query.getResultList();
-		
-		if(!list.isEmpty()){
-			utente = list.get(0);
-		}
-		return utente;
-		*/
 	}
 }

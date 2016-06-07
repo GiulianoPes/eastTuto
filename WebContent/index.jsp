@@ -61,16 +61,14 @@
 							<table>
 								<tr>
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="login.jsp">
-											<input class="profileBoxFormInput" type="submit"
-												value="Login">
+										<form class="profileBoxForm" action="faces/login.jsp">
+											<input class="profileBoxFormInput" type="submit" value="Login">
 										</form>
 									</td>
 
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="register.jsp">
-											<input class="profileBoxFormInput" type="submit"
-												value="Registrati">
+										<form class="profileBoxForm" action="faces/register.jsp">
+											<input class="profileBoxFormInput" type="submit" value="Registrati">
 										</form>
 									</td>
 								</tr>
@@ -81,31 +79,27 @@
 						<div id="userProfileBox">
 							<table>
 								<tr>
-									<td style="text-align: right;">
-										<div style="postion: absolute;">
-											
-										</div>
-									</td>
-									<td style="text-align: right;">
 									<f:view>
-										<h:form>
-											<h:commandButton value="logout"  action="#{sessionController.logout}"/>
+									<td style="text-align: right;">
+										<h:form>		
+											<h:commandButton  value="#{utenteLogged.username}" type="submit" action="#{utenteController.myProfile(utenteLogged.id)}"/>
 										</h:form>
-									</f:view>
-									</td>
+									</td>									  
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="viewMyTuto">
-											<input class="profileBoxFormInput" type="button"
-												value="${utenteLogged.username }" id="personalPage">
-										</form>
-									</td>
-									<td style="text-align: right;">
-									<f:view>
+									
 										<h:form >
 											<h:commandButton value="+" type="submit" action="#{categoriaController.initCategorie}"/>										
 										</h:form>
-									</f:view>
+									
 									</td>
+									<td style="text-align: right;">
+									
+										<h:form>
+											<h:commandButton value="logout" type="submit" action="#{sessionController.logout}"/>
+										</h:form>
+									
+									</td>
+									</f:view>
 								</tr>
 							</table>
 						</div> 

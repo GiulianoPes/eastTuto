@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.uniroma3.dialog.Dialog;
 import it.uniroma3.model.Utente;
-import it.uniroma3.persistence.UtenteDao;
 
 @WebServlet("/addFollowing")
 public class AddFollowing extends HttpServlet {

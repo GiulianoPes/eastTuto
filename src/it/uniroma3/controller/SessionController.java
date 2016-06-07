@@ -22,7 +22,6 @@ public class SessionController{
 	public String login(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utenteLogged = utenteFacade.findByCredentials(username, password);
-
 		if(this.utenteLogged != null){
 			context.getExternalContext().getSessionMap().put("utenteLogged", utenteLogged);			
 		}
@@ -35,6 +34,7 @@ public class SessionController{
 		System.out.println("LOGOUT------------------------------");
 		return "index";
 	}
+	//Get & Set
 
 	public String getUsername() {
 		return username;
@@ -51,12 +51,12 @@ public class SessionController{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public Utente getUtente() {
+	
+	public Utente getUtenteLogged() {
 		return utenteLogged;
 	}
-
-	public void setUtente(Utente utente) {
-		this.utenteLogged = utente;
+	
+	public void setUtenteLogged(Utente utenteLogged) {
+		this.utenteLogged = utenteLogged;
 	}
 }

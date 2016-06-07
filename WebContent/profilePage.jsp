@@ -5,6 +5,10 @@
 	import="it.uniroma3.model.Utente"
 	import="it.uniroma3.model.Tuto"
 	import="java.util.List"%>
+	
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="css/style_personal.css">
 <link rel="stylesheet" href="css/style_tuto.css">
@@ -13,15 +17,14 @@
 <script src="js/tuto.js"></script>
 <script src="js/follower.js"></script>
 
-
 </head>
-<% Utente utentePagina = (Utente) request.getAttribute("Utente");
-	Utente utenteCorrente = (Utente) session.getAttribute("Utente");
+<% //Utente utentePagina = (Utente) request.getAttribute("Utente");
+//	Utente utenteCorrente = (Utente) session.getAttribute("Utente");
 %>
 <script src="js/personal.js"></script>
 
 
-<table style="width: 100%;"">
+<table style="width: 100%;">
 
 	<col width="20%">
 	<col width="60%">
@@ -29,16 +32,16 @@
 	<tr>
 		<td colspan="3">
 			<div id="personalUpperBox">
-				<h1><%=utentePagina.getUsername() %>'s world</h1>
-				<% if((utenteCorrente!=null) && (!utentePagina.getUsername().equals(utenteCorrente.getUsername()))){ %>
-					<%String seguo = "Follow";%>
-					<%System.out.println(utenteCorrente.isFollowing(utentePagina)); %>
-					<%System.out.println(utenteCorrente.getFollowing().toString()); %>
-					<%if(utenteCorrente.isFollowing(utentePagina)){ seguo = "Following";System.out.println("+++++++++Following");}%>					
-					<div>
-						<input class="profileBoxFormInput" type="button" value=<%=seguo %> id="follow">
-					</div>	
-				<%} %>
+				<h1>${utenteController.username }</h1>
+				<c:if test="${(not empty utenteLogged) && (utenteLogged!=utenteController.utente)}">
+				<c:set var="seguo" value="Follow"></c:set>
+					<c:if test="${utenteLogged.isFollowing(utenteController.utente)}">
+					<c:set var="seguo" value="Following"></c:set>									
+						<div>
+							<input class="profileBoxFormInput" type="button" value="#{seguo}" id="follow">
+						</div>	
+					</c:if>
+				</c:if>
 			</div>
 		</td>
 	</tr>
