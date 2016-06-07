@@ -6,9 +6,6 @@
 <link rel="stylesheet" href="css/style_tuto.css">
 <script src="js/tuto.js"></script>
 
-
-
-<% //List<Tuto> listTuto=(List<Tuto>) request.getAttribute("listTuto"); %>
-<% //for(Tuto tuto:listTuto){%>
-	<%//@include file="templates/tuto.html" %>
-<% //} %>
+<c:forEach items="${tutoController.tutos}" var="tuto">
+        ${tuto}<br>
+</c:forEach>
