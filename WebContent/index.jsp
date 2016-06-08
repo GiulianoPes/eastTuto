@@ -81,11 +81,13 @@
 									
 									<td style="text-align: right;">
 										<h:form>		
-											<h:commandButton  value="#{utenteLogged.username}" type="submit" action="#{utenteController.myProfile(utenteLogged.id)}"/>
+											<h:commandButton  value="#{utenteLogged.username}" type="submit" action="#{utenteController.myProfile(utenteLogged.id)}">
+												
+											</h:commandButton>
 										</h:form>
 									</td>									  
 									<td style="text-align: right;">
-									
+			
 										<h:form >
 											<h:commandButton value="+" type="submit" action="#{categoriaController.initCategorie}"/>										
 										</h:form>
