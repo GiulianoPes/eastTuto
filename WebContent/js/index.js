@@ -14,7 +14,7 @@ $(document).ready(function(){
 		});
 	}else{
 		$.ajax({
-			url: 'homeContent.jsp',
+			url: 'faces/homeContent.xhtml',
 			type: 'post',
 			success: function(result){
 				$("#container").html(result);

@@ -1,0 +1,46 @@
+CIAO
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:composition>
+		<center>
+				<div class="myTuto" id="${tuto.id} ">
+					<table class="myTutoTable">
+						<col width="20%" />
+						<col width="70%" />
+						<col width="10%" />
+						<tr>
+							<td class="userImg">
+								<img src="img/tuto1.jpg" height="50px" width="50px"/>
+							</td>
+							<td>
+								<h3><b><div class="tutoOwner" id="${tuto.getUtente().getUsername()}">${tuto.getUtente().getUsername()}</div></b></h3>
+								<h6>${tuto.getDataCreazione()}</h6>
+							</td>
+							<td class="myTutoOptions">
+								<ul style="list-style: none;">
+									<li><img src="img/icon32/magnifying-glass.png" width="16px"
+										height="16px" title="Dettagli" /></li>
+									<li><img src="img/icon32/pencil.png" width="16px"
+										height="16px" title="Modifica" /></li>
+									<li><img src="img/icon32/trash.png" width="16px"
+										height="16px" title="Elimina" />:</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<ul class="myTutoDetails">
+									<li> <h5><b>${tuto.getCategoria().getNome()}</b></h5></li>
+									<li> <h4><b>${tuto.getNome()}</b></h4></li>
+									<li> <h5><b>${tuto.getDescrizione()}</b></h5></li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</center>
+	</ui:composition>
+
+</html>

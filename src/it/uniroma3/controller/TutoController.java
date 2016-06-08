@@ -58,10 +58,11 @@ public class TutoController{
 		return "index.xhtml"; 
 	}
 	
-	public void initTuto(){
+	public List<Tuto> initTuto(){
 		this.tutos = tutoFacade.findAll();
 		System.out.println(this.tutos.size());
 		//return this.tutos;
+		return this.tutos;
 	}
 	
 	public String getTutoFromUtente(){

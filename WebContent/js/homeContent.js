@@ -1,4 +1,4 @@
-$('body').ready(function(){
+$(document).ready(function(){
 
 	$('.categoryItem').click(function(event){
 		$.ajax({
