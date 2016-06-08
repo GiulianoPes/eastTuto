@@ -1,14 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">  
+      xmlns:c="http://java.sun.com/jsp/jstl/core"    
+         xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+<h:head>
+
 <script src="js/homeContent.js"></script>
-<head>
 <link rel="stylesheet" href="css/style_home_Content.css"></link>
 <link rel="stylesheet" href="css/style_tuto.css"></link>
-</head>
-
+</h:head>
+<h:body>
 
 <div class="box" id="categoryBox">
 	<table>
@@ -44,8 +49,14 @@
 	</table>
 </div>
 <div class="box" id="lastTuto" style="padding-bottom: 10px;">
-	<c:forEach var="tuto" items="${tutoController.initTuto()}" >
-		<ui:include src="templates/tuto.xhtml" />
-	</c:forEach>
+<!--	<c:forEach var="tuto" items="${tutoController.initTuto()}" > -->
+	<ui:repeat var="tuto" value="${tutoController.initTuto()}">
+		${tuto.id}
+		<ui:include src="templates/tuto.xhtml" >
+		  <ui:param name="tuto" value="#{tuto}"></ui:param> 
+		</ui:include>
+	</ui:repeat>
+	<!--</c:forEach>-->
 </div>
+</h:body>
 </html>

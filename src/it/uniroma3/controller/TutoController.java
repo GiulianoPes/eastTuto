@@ -60,7 +60,7 @@ public class TutoController{
 	
 	public List<Tuto> initTuto(){
 		this.tutos = tutoFacade.findAll();
-		System.out.println(this.tutos.size());
+		System.out.println(this.tutos.toString());
 		//return this.tutos;
 		return this.tutos;
 	}
