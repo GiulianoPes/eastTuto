@@ -23,7 +23,7 @@
 					<div>
 						Password:
 					<!-- 	<h:inputSecret></h:inputSecret> -->
-						<h:inputText value="#{sessionController.password}" required="true"
+						<h:inputSecret value="#{sessionController.password}" required="true"
 							requiredMessage="password obbligatoria" id="password" />
 						<h:message for="password" />
 					</div>

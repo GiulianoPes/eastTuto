@@ -36,7 +36,7 @@ public class UtenteController{
 			sessionController.setUsername(username);
 			sessionController.login();
 		}
-		return "index";
+		return "index.xhtml";
 	}
 	
 	public List<Utente> getUtenti(){
@@ -46,7 +46,7 @@ public class UtenteController{
 	
 	public String myProfile(Long id){
 		this.utente = utenteFacade.findById(id);
-		return "profilePage";
+		return "profilePage.jsp";
 	}
 	
 	//Getter and setter

@@ -1,4 +1,4 @@
-$('body').ready(function(){
+$(document).ready(function(){
 
 	userNameHash = location.hash;
 	userName = location.hash.substring(1,userNameHash.size);
@@ -47,6 +47,5 @@ $('body').ready(function(){
 	$('#easyTutoLogo').click(function(event){
 		 window.location.href='';
 	});
-	*/
-	
+	*/	
 });

@@ -29,7 +29,7 @@ public class CategoriaController {
 	public String initCategorie(){
 		this.categorie = categoriaFacade.findAll();
 		System.out.println(this.categorie.toString());
-		return "compileTuto";
+		return "compileTuto.jsp";
 	}
 	
 	public List<Categoria> getCategorie(){

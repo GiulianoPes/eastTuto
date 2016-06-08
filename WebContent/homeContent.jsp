@@ -1,6 +1,12 @@
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">  
 <script src="js/homeContent.js"></script>
-<link rel="stylesheet" href="css/style_home_Content.css">
+<head>
+<link rel="stylesheet" href="css/style_home_Content.css"></link>
+</head>
+
 
 <div class="box" id="categoryBox">
 	<table>
@@ -35,4 +41,16 @@
 
 	</table>
 </div>
-<div class="box" id="lastTuto"></div>
+<div class="box" id="lastTuto">
+<f:view>
+	<h:form>
+	${tutoController.initTuto}
+	<c:forEach var="tuto" items="${tutoController.tutos}" >
+		${tuto}
+		pa
+		<%@ include file="templates/tuto.html" %>
+	</c:forEach>
+	</h:form>>
+</f:view>
+</div>
+</html>

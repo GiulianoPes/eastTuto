@@ -25,7 +25,7 @@
                      requiredMessage="username obbligatorio"
                      id="username" /> <h:message for="username" />
 				</div>
-				<div>Password: <h:inputText value="#{utenteController.password}" 
+				<div>Password: <h:inputSecret value="#{utenteController.password}" 
                      required="true"
                      requiredMessage="password obbligatoria"
                      id="password" /> <h:message for="password" />

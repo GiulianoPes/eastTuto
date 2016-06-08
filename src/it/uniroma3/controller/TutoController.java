@@ -55,12 +55,13 @@ public class TutoController{
 		//Lo salvo
 		this.tuto = tutoFacade.save(this.tuto);
 		System.out.println("Finito di creare");
-		return "index"; 
+		return "index.xhtml"; 
 	}
 	
-	public String initTuto(){
+	public void initTuto(){
 		this.tutos = tutoFacade.findAll();
-		return "listTuto";
+		System.out.println(this.tutos.size());
+		//return this.tutos;
 	}
 	
 	public String getTutoFromUtente(){

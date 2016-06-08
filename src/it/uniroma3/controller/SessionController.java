@@ -25,14 +25,14 @@ public class SessionController{
 		if(this.utenteLogged != null){
 			context.getExternalContext().getSessionMap().put("utenteLogged", utenteLogged);			
 		}
-		return "index";
+		return "index.xhtml";
 	}
 	public String logout(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utenteLogged = null;
 		context.getExternalContext().getSessionMap().remove("utenteLogged");
 		System.out.println("LOGOUT------------------------------");
-		return "index";
+		return "index.xhtml";
 	}
 	//Get & Set
 

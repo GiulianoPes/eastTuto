@@ -10,13 +10,13 @@ $('body').ready(function(){
 			}
 		});
 	})
-	
+	/*
 	$.ajax({		
 		url: 'lastTuto', 
 		type: 'post',
 		success: function(result) {
 			$("#lastTuto").html(result);
 		}
-	});
+	});*/
 
 });
