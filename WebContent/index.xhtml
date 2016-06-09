@@ -45,7 +45,7 @@
 								<table>
 									<tr>
 										<td><input id="searchBar" type="text" name="searchValure" /></td>
-										<td><input class="profileBoxFormInput" type="button" value="cerca" /></td>
+										<td><input class="profileBoxFormInput" type="button" value="cerca" style="height: 30px;" /></td>
 									</tr>
 								</table>
 							</form>
@@ -57,14 +57,14 @@
 							<table>
 								<tr>
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="faces/login.jsp">
-											<input class="profileBoxFormInput" type="submit" value="Login" />
+										<form style="top: 3px;" class="profileBoxForm" action="faces/login.jsp">
+											<input style="height: 30px;" class="profileBoxFormInput" type="submit" value="Login" />
 										</form>
 									</td>
 
 									<td style="text-align: right;">
-										<form class="profileBoxForm" action="faces/register.jsp">
-											<input class="profileBoxFormInput" type="submit" value="Registrati" />
+										<form style="top: 3px;" class="profileBoxForm" action="faces/register.jsp">
+											<input style="height: 30px;" class="profileBoxFormInput" type="submit" value="Registrati" />
 										</form>
 									</td>
 								</tr>
@@ -80,14 +80,14 @@
 											<input type="button" class="headerInput" value="#{utenteLogged.username}" id="personalPageButton"/>
 									</td>								  
 									<td style="text-align: right;">			
-										<h:form >
-											<h:commandButton value="+" type="submit" action="#{categoriaController.initCategorie}"/>										
+										<h:form style="top: 5px;">
+											<h:commandButton style="height: 30px;" value="+" type="submit" action="#{categoriaController.initCategorie}"/>										
 										</h:form>									
 									</td>
 									<td style="text-align: right;">
 									
-										<h:form>
-											<h:commandButton value="logout" type="submit" action="#{sessionController.logout}"/>
+										<h:form style="height: 30px; top: -3px;">
+											<h:commandButton style="height: 30px;" value="logout" type="submit" action="#{sessionController.logout}"/>
 										</h:form>
 									
 									</td>
