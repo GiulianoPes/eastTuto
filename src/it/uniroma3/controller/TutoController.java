@@ -69,6 +69,11 @@ public class TutoController{
 		this.tutos = tutoFacade.getTutoFromUtente(this.utente);
 		return "tutos";
 	}
+	
+	public Tuto getTutoFromId(Long id) {
+		this.tuto = tutoFacade.findById(id);
+		return tuto;
+	}
 
 	public Long getId() {
 		return id;

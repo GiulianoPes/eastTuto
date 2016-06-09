@@ -4,12 +4,12 @@ $('.myTuto').click(function(event){
 	//alert(tuto_id);
 	
 	$.ajax({
-		url: 'tutoDetails', 
+		url: 'faces/tutoDetails.xhtml', 
 		type: 'post', 
 		data: 'tutoId='+tuto_id, 
 		success: function(result) {
-			//location.hash = userName;
-			$(".container").html(result);
+			location.hash = "tuto:"+tuto_id;
+			$("#container").html(result);
 		}
 	});
 	
