@@ -71,6 +71,25 @@ form input:hover {
 	cursor: pointer;
 }
 
+form textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: 0;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.2);
+	width: 90px;
+	border-radius: 3px;
+	/*padding: 5px 15px; */
+	margin: 0 auto 10px auto;
+	display: block;
+	text-align: center;
+	font-size: 18px;
+	color: white;
+	-webkit-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+	font-weight: 300;
+}
 
 form button {
 	-webkit-appearance: none;
@@ -91,6 +110,17 @@ form button {
 
 form button:hover {
 	background-color: #f5f7f9;
+}
+
+.input-comile-tuto-text {
+	width: 40%;
+	height: 30px;
+}
+
+.input-compile-tuto-textarea {
+	width: 40%;
+	height: 250px;
+	resize: none;
 }
 
 

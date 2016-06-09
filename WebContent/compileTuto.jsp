@@ -15,24 +15,28 @@
 </head>
 <body>	
 	<div class="wrapper">
-		<div class="container">		
+		<div class="container">
+			<h1>Compila un nuovo Tuto</h1>		
 			<f:view>
 				<h:form>
 				<div>Nome: <h:inputText value="#{tutoController.nome}"	
-                     required="true"
-                     requiredMessage="nome del tuto obbligatorio"
-                     id="nome" /> <h:message for="nome" />
+					styleClass="input-comile-tuto-text"
+                    required="true"
+                    requiredMessage="nome del tuto obbligatorio"
+                    id="nome" /> <h:message for="nome" />
 				</div>
-				<div>Descrizione: <h:inputText value="#{tutoController.descrizione}" 
-                     required="true"
-                     requiredMessage="descrizione obbligatoria"
-                     id="descrizione" /> <h:message for="descrizione" />
+				<div>Descrizione: <br><h:inputTextarea value="#{tutoController.descrizione}" 
+					styleClass="input-compile-tuto-textarea"
+                    required="true"
+                    requiredMessage="descrizione obbligatoria"
+                    id="descrizione" /> <h:message for="descrizione" />
 				</div>				
 				<div>Categoria:	
-				<h:selectOneMenu value="#{tutoController.categoriaNome}">
+				<h:selectOneMenu style="width: 40%;" value="#{tutoController.categoriaNome}">
    					 <f:selectItems value="#{categoriaController.categorie}" var="categoria" itemValue="#{categoria}" />
 				</h:selectOneMenu>
 				</div>
+				<br><br>
 				<div>
 					<h:commandButton value="Invia tuto"  action="#{tutoController.creaTuto}"/>
 				</div>		
