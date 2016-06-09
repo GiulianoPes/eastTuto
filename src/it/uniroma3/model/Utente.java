@@ -116,7 +116,12 @@ public class Utente {
 
 	@Override
 	public boolean equals(Object obj) {
-		Utente utente = (Utente) obj;
-		return this.getId().equals(utente.getId());
+		System.out.println("sono nell'equals");
+		if(obj!=null){
+			Utente utente = (Utente) obj;
+			System.out.println(this.getUsername()+" --------------- "+utente.getUsername());
+			return this.getId().equals(utente.getId());
+		}
+		else return false;
 	}	
 }

@@ -68,4 +68,19 @@ public class UtenteFacade{
 		}
 		return utente; 
 	}
+	public Utente findByUsername(String username){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Utente> cq = cb.createQuery(Utente.class);	
+		Root<Utente> rootUtenti = cq.from(Utente.class);
+		ParameterExpression<String> parameter = cb.parameter(String.class);
+		parameter.alias(username);
+        cq.where(cb.equal(rootUtenti.get("username"), username));
+        List<Utente> list = em.createQuery(cq).getResultList();
+        
+        Utente utente = null;
+        if(!list.isEmpty()){
+			utente = list.get(0);
+		}
+		return utente; 
+	}
 }

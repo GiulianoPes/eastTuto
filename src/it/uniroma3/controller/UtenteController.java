@@ -48,6 +48,14 @@ public class UtenteController{
 		this.utente = utenteFacade.findById(id);
 		return "profilePage.jsp";
 	}
+	public Utente myProfile(String username){
+		this.utente = utenteFacade.findByUsername(username);
+		System.out.println("Chiamata a myProfile "+username);
+		if(this.utente!=null){
+		System.out.println(utente.getTuto().size());
+		System.out.println(utente.getFollowing().size());}
+		return this.utente;
+	}
 	
 	//Getter and setter
 

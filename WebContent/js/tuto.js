@@ -20,12 +20,12 @@ $('.tutoOwner').click(function(event){
 	userName = $(this).attr("id");
 	
 	$.ajax({
-		url: 'getUser', 
+		url: 'faces/profilePage.xhtml', 
 		type: 'post', 
 		data:'username='+userName, 
 		success: function(result) {
 			location.hash = userName;
-			$(".container").html(result);
+			$("#container").html(result);
 		}
 	});
 })

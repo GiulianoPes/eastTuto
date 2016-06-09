@@ -77,21 +77,7 @@
 								<tr>
 								<f:view>									
 									<td style="text-align: right;">
-										<h:form>		
-			#{utenteController.myProfile(utenteLogged.id)}
-											<h:commandButton  value="#{utenteLogged.username}" type="submit" action="#{utenteController.myProfile(utenteLogged.id)}">
-												
-											</h:commandButton>
-										</h:form>
-									</td>	
-									<td style="text-align: right;">
-										<h:form>		
-											<h:commandButton  value="#{utenteLogged.username}">
-												<f:ajax render="container">
-													
-												</f:ajax>
-											</h:commandButton>
-										</h:form>
+											<input type="button" class="headerInput" value="#{utenteLogged.username}" id="personalPageButton"/>
 									</td>								  
 									<td style="text-align: right;">			
 										<h:form >
