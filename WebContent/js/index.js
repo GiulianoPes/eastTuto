@@ -36,19 +36,23 @@ $(document).ready(function(){
 			});
 		}else if(hash.substring(1,5)=="page"){
 			pageHash = hash.substring(6,hash.size);
+			//alert("updateHash - page: "+pageHash);
+			pageHash +=".xhtml";
 			$.ajax({
-				url: "faces/"+pageHash+".xhtml", 
+				url: "faces/"+pageHash, 
 				type: 'post', 
 				success: function(result){
 					$("#container").html(result);
 				}
 			});
 		}else if(hash.substring(1,5)=="tuto"){
-			pageHash = hash.substring(6,hash.size);
+			tutoHash = hash.substring(6,hash.size);
+			//alert("updateHash - tuto: "+tutoHash);
 			$.ajax({
-				url: "faces/"+pageHash+".jsp", 
+				url: 'faces/tutoDetails.xhtml', 
 				type: 'post', 
-				success: function(result){
+				data: 'tutoId='+tutoHash, 
+				success: function(result) {
 					$("#container").html(result);
 				}
 			});
@@ -56,21 +60,10 @@ $(document).ready(function(){
 			alert("Risorsa: "+hash+" inesistente");
 		}
 	}
-
 	if(Hash!=""){
 		
 		updateHashPage(Hash);
-		/*window.history.pushState({url: "faces/profilePage.xhtml"+location.hash}, "", "");
-		$.ajax({
-			url: 'faces/profilePage.xhtml', 
-			type: 'post',
-			data:'username='+userName, 
-			success: function(result){
-				$("#container").html(result);
-				//alert(location);
-				
-			}
-		});*/
+		
 	}else{
 		$.ajax({
 			url: 'faces/homeContent.xhtml',
@@ -80,49 +73,18 @@ $(document).ready(function(){
 			}
 		});
 	}
-	
-	$("#login-button").click(function(event){
-		event.preventDefault();
 
-		$('form').fadeOut(500);
-		$('.wrapper').addClass('form-success');
-	});	
 
-	$("#personalPageButton").click(function(event){
-		//setHistory(window.location);
-		
-		//window.location.hash = "user:"+$("#personalPageButton").attr("value");
-		//alert("Sono il tasto"+history.state.url)
-		/*$.ajax({
-			url: 'faces/profilePage.xhtml', 
-			type: 'post',
-			data:'username='+$("#personalPageButton").attr("value"), 
-			success: function(result){
-				$("#container").html(result);
-				window.location.hash = "user:"+$("#personalPageButton").attr("value");
-				
-			}
-		});*/
-	});
 	$(".headerInput").click(function(event){
 		action = $(this).attr("id");
 		if(action == "personalPage"){
 			window.location.hash = "user:"+$(this).attr("value");
-		}else {
+		}else if (action == "homeContent"){
+			
+			window.location = "";
+		}else{
 			window.location.hash = "page:"+$(this).attr("id");
 		}
-		//window.location.hash = "user:"+$("#personalPageButton").attr("value");
-		//alert("Sono il tasto"+history.state.url)
-		/*$.ajax({
-			url: 'faces/profilePage.xhtml', 
-			type: 'post',
-			data:'username='+$("#personalPageButton").attr("value"), 
-			success: function(result){
-				$("#container").html(result);
-				window.location.hash = "user:"+$("#personalPageButton").attr("value");
-				
-			}
-		});*/
 	});
 	
 

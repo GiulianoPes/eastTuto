@@ -1,9 +1,12 @@
 $('.myTuto').click(function(event){
+	event.stopPropagation();
 	tuto_id = $(this).attr("id");
 	tuto_id = Number(tuto_id);
 	//alert(tuto_id);
+
+	window.location.hash = "tuto:"+tuto_id;
 	
-	$.ajax({
+	/*$.ajax({
 		url: 'faces/tutoDetails.xhtml', 
 		type: 'post', 
 		data: 'tutoId='+tuto_id, 
@@ -11,14 +14,14 @@ $('.myTuto').click(function(event){
 			location.hash = "tuto:"+tuto_id;
 			$("#container").html(result);
 		}
-	});
+	});*/
 	
 });
 
 $('.tutoOwner').click(function(event){
 	event.stopPropagation();
 	userName = $(this).attr("id");
-	window.location.hash = "user:"+userName
+	window.location.hash = "user:"+userName;
 	/*
 	
 	$.ajax({

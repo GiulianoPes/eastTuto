@@ -41,14 +41,14 @@
 					</td>
 					<td>
 						<div id="searchBox">
-							<form class="profileBoxForm" action="search">
-								<table>
-									<tr>
-										<td><input id="searchBar" type="text" name="searchValure" /></td>
-										<td><input class="profileBoxFormInput" type="button" value="cerca" style="height: 30px;" /></td>
-									</tr>
-								</table>
-							</form>
+							<table>
+								<col width="90%"/>
+								<col width="10%"/>
+								<tr>
+									<td><input class="headerInput" id="searchBar" type="text" name="searchValure" /></td>
+									<td><input class="headerInput" type="button" value="cerca" style="height: 30px;" /></td>
+								</tr>
+							</table>
 						</div>
 					</td>
 					<td style="text-align: right;">
@@ -56,6 +56,9 @@
 						<div id="userProfileBox">
 							<table>
 								<tr>
+									<td>
+										<input type="button" class="headerInput" value="Home" id="homeContent"/>
+									</td>
 									<td style="text-align: right;">
 										<input type="button" class="headerInput" value="Login" id="loginPage"/>
 									</td>
@@ -71,6 +74,9 @@
 						<div id="userProfileBox">
 							<table>
 								<tr>
+								<td>
+										<input type="button" class="headerInput" value="Home" id="homeContent"/>
+									</td>
 								<f:view>									
 									<td style="text-align: right;">
 											<input type="button" class="headerInput" value="#{utenteLogged.username}" id="personalPage"/>
