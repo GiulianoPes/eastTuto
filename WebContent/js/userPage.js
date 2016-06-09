@@ -1,4 +1,16 @@
-$('body').ready(function(){
+$(document).ready(function(){
+	
+	$('#homeButton').click(function(event){
+		alert("ciao");
+		window.history.pushState({url: "faces/profilePage.xhtml"+location.hash}, "", "");
+		$.ajax({
+			url: '/', 
+			type: 'post',
+			success: function(result){
+				$("#container").html(result);
+			}
+		});
+	});
 	
 	$('#follow').click(function(event){
 		

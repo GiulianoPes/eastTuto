@@ -57,15 +57,11 @@
 							<table>
 								<tr>
 									<td style="text-align: right;">
-										<form style="top: 3px;" class="profileBoxForm" action="faces/login.jsp">
-											<input style="height: 30px;" class="profileBoxFormInput" type="submit" value="Login" />
-										</form>
+										<input type="button" class="headerInput" value="Login" id="loginPage"/>
 									</td>
 
 									<td style="text-align: right;">
-										<form style="top: 3px;" class="profileBoxForm" action="faces/register.jsp">
-											<input style="height: 30px;" class="profileBoxFormInput" type="submit" value="Registrati" />
-										</form>
+										<input type="button" class="headerInput" value="Registrati" id="registerPage"/>
 									</td>
 								</tr>
 							</table>
@@ -77,7 +73,7 @@
 								<tr>
 								<f:view>									
 									<td style="text-align: right;">
-											<input type="button" class="headerInput" value="#{utenteLogged.username}" id="personalPageButton"/>
+											<input type="button" class="headerInput" value="#{utenteLogged.username}" id="personalPage"/>
 									</td>								  
 									<td style="text-align: right;">			
 										<h:form style="top: 5px;">

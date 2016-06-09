@@ -18,6 +18,8 @@ $('.myTuto').click(function(event){
 $('.tutoOwner').click(function(event){
 	event.stopPropagation();
 	userName = $(this).attr("id");
+	window.location.hash = "user:"+userName
+	/*
 	
 	$.ajax({
 		url: 'faces/profilePage.xhtml', 
@@ -27,5 +29,5 @@ $('.tutoOwner').click(function(event){
 			location.hash = userName;
 			$("#container").html(result);
 		}
-	});
+	});*/
 })
