@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Login</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/login_style.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -16,19 +17,20 @@
 				<h:form>
 					<div>
 						Username:
-						<h:inputText value="#{sessionController.username}" required="true"
+						<h:inputText styleClass="input-login" value="#{sessionController.username}" required="true"
 							requiredMessage="username obbligatorio" id="username" />
 						<h:message for="username" />
 					</div>
 					<div>
 						Password:
 					<!-- 	<h:inputSecret></h:inputSecret> -->
-						<h:inputSecret value="#{sessionController.password}" required="true"
+						<h:inputSecret styleClass="input-login" value="#{sessionController.password}" required="true"
 							requiredMessage="password obbligatoria" id="password" />
 						<h:message for="password" />
 					</div>
+					<br>
 					<div>
-						<h:commandButton value="Login" action="#{sessionController.login}" />
+						<h:commandButton styleClass="input-login-button" value="Login" action="#{sessionController.login}" />
 					</div>
 				</h:form>
 			</f:view>
