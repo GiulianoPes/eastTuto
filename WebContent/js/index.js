@@ -57,7 +57,7 @@ $(document).ready(function(){
 				}
 			});
 		}else{
-			alert("Risorsa: "+hash+" inesistente");
+			window.location = "";
 		}
 	}
 	if(Hash!=""){

@@ -33,14 +33,14 @@ public class Utente {
 	
 	//Tuto
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-	//@JoinTable(name = "utenteSegue")
-    //@JoinColumn(name = "utente_id")
+	//@JoinTable(name = "tuto")
+    @JoinColumn(name = "tuto_id",referencedColumnName = "id")
 	private List<Tuto> tuto;	
 		
 	//Following
 	@ManyToMany(cascade = {CascadeType.DETACH}, fetch = FetchType.EAGER)
-	@JoinTable(name = "utenteSegue")
-	//@JoinColumn(name = "utente_id")
+	//@JoinTable(name = "utenteSegue")
+	@JoinColumn(name = "utente_id",referencedColumnName = "id")
 	private Set<Utente> following;
 	
 	
