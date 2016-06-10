@@ -40,7 +40,7 @@ public class Utente {
 	//Following
 	@ManyToMany(cascade = {CascadeType.DETACH}, fetch = FetchType.EAGER)
 	//@JoinTable(name = "utenteSegue")
-	@JoinColumn(name = "utente_id",referencedColumnName = "id")
+	//@JoinColumn(name = "utente_id",referencedColumnName = "id")
 	private Set<Utente> following;
 	
 	
