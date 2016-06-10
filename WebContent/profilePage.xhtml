@@ -16,20 +16,22 @@
 	<link rel="stylesheet" href="css/style_follower.css" />
 	
 	<script src="js/tuto.js"></script>
-	<script src="js/follower.js"></script>
 	<script src="js/profilePage.js"></script>
 </head>
 
 
 
 <body>	
-					
-					<!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
+					 <!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
 					<ui:param name="username" value="#{param['username']}"></ui:param>
-					<ui:param name="utenteProfile" value="${utenteController.utente}"></ui:param>
-
+					
 					<c:choose>
 					    <c:when test="${not empty utenteController.myProfile(username)}">
+					    <!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
+						
+						<ui:param name="utenteProfile" value="#{utenteController.utente}"></ui:param>
+						${utenteProfile.setTuto(tutoController.getTutoFromUtente(utenteProfile))}
+						
 					    <table style="width: 100%;">
 	
 							<col width="20%" />
@@ -39,13 +41,13 @@
 								<td colspan="3">
 									<div id="personalUpperBox">
 								    	<h1>${utenteProfile.username}</h1>
-										<c:if test="${(not empty utenteLogged) and (!utenteLogged.equals(utenteController.myProfile(username)))}">
+										<c:if test="${(not empty utenteLogged) and (!utenteLogged.equals(utenteProfile))}">
 											<ui:param name="seguo" value="follow"></ui:param>
 											<c:if test="#{utenteLogged.isFollowing(utenteProfile)}">
 												<ui:param name="seguo" value="following"></ui:param>								
 											</c:if>
-											<div>
-												<input class="profileBoxFormInput" type="button" value="${seguo}" id="follow" />
+											<div id="followingBox">
+												<input class="profileBoxFormInput"  type="button" value="${seguo}" id="follow" />
 											</div>	
 										</c:if>
 									</div>
@@ -53,15 +55,21 @@
 							</tr>
 							<tr>
 								<td>
-									<div id="followerBox">Following<br />
-										
+									<div id="followerBox">
+										<div>
+											${utenteProfile.getFollowing().size()} Following<br />
+											<ui:repeat var="follow" value="${utenteProfile.getFollowing().toArray()}">
+												<ui:include src="templates/follower.xhtml" >
+								  					<ui:param name="follow" value="#{follow}"></ui:param> 
+												</ui:include>
+											</ui:repeat>
+										</div>
 									</div>
 								</td>
 								<td>
 									<div id="myTutoBox">
-									${utenteProfile.getTuto().size()}
-										<ui:repeat var="tuto" value="${utenteController.utente.getTuto()}">
-											${tuto.id}
+									
+										<ui:repeat var="tuto" value="${utenteProfile.getTuto()}">
 											<ui:include src="templates/tuto.xhtml" >
 							  					<ui:param name="tuto" value="#{tuto}"></ui:param> 
 											</ui:include>

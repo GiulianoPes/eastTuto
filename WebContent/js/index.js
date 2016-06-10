@@ -4,12 +4,12 @@ $(document).ready(function(){
 	
 	window.onpopstate = function(e) {
 		//alert("onpop"+history.state.url+" ");
-		//alert("onpopo");
-		
+		//alert(Hash);
 		if(Hash!=window.location.hash){
 			updateHashPage(window.location.hash);
 		}
 		else if(Hash==""){
+			//alert("carico homeContetn");
 			$.ajax({
 				url: "faces/homeContent.xhtml", 
 				type: 'post', 
@@ -23,6 +23,7 @@ $(document).ready(function(){
 	
 	var updateHashPage = function(hash) {
 		//alert("updateHASH");
+		Hash = window.location.hash;
 		if(hash.substring(1,5)=="user"){
 			userHash = hash.substring(6,hash.size);
 			//alert("updateHash - User: "+userHash);
@@ -57,7 +58,7 @@ $(document).ready(function(){
 				}
 			});
 		}else{
-			window.location = "";
+			window.location = "/easyTuto/";
 		}
 	}
 	if(Hash!=""){
@@ -65,6 +66,7 @@ $(document).ready(function(){
 		updateHashPage(Hash);
 		
 	}else{
+		//alert("carico homeContetn");
 		$.ajax({
 			url: 'faces/homeContent.xhtml',
 			type: 'post',
@@ -81,18 +83,11 @@ $(document).ready(function(){
 			window.location.hash = "user:"+$(this).attr("value");
 		}else if (action == "homeContent"){
 			
-			window.location = "";
+			window.location = "/easyTuto/";
 		}else{
 			window.location.hash = "page:"+$(this).attr("id");
 		}
 	});
-	
-
-	
-	var setHistory = function(url){
-		alert(url);
-		//window.history.pushState({url: "faces/homeContent.xhtml"}, "", "");
-	}
 	
 	
 	

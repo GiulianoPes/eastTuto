@@ -58,7 +58,7 @@ public class TutoFacade {
 		ParameterExpression<Long> parameter = cb.parameter(Long.class);//
 		parameter.alias(utente.getId().toString());       
 		*/
-		cq.where(cb.equal(rootTuto.get("utente_id"), utente.getId()));
+		cq.where(cb.equal(rootTuto.get("utente"), utente));
         
         List<Tuto> listaTuto = em.createQuery(cq).getResultList();
 		return listaTuto;

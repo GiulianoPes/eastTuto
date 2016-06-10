@@ -34,6 +34,12 @@ public class SessionController{
 		System.out.println("LOGOUT------------------------------");
 		return "index.xhtml";
 	}
+	public void addFollowing(Utente utente){
+		this.utenteLogged.addFollowing(utente);
+		System.out.println("aggiungo follow "+utente.getUsername());
+		this.utenteLogged = utenteFacade.update(utenteLogged);
+		
+	}
 	//Get & Set
 
 	public String getUsername() {

@@ -1,4 +1,5 @@
 .follower {
+	display: inline-block;
 	background-color: white;
 	-moz-box-shadow: 1px 1px 1px #165346;
 	-webkit-box-shadow: 1px 1px 1px #165346;

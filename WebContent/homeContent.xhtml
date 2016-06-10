@@ -50,9 +50,8 @@
 	</table>
 </div>
 <div class="box" id="lastTuto" style="padding-bottom: 10px;">
-<!--	<c:forEach var="tuto" items="${tutoController.initTuto()}" > -->
 	<ui:repeat var="tuto" value="${tutoController.initTuto()}">
-		${tuto.id}
+		
 		<ui:include src="templates/tuto.xhtml" >
 		  <ui:param name="tuto" value="#{tuto}"></ui:param> 
 		</ui:include>

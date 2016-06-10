@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import it.uniroma3.model.Categoria;
@@ -69,7 +70,11 @@ public class TutoController{
 		this.tutos = tutoFacade.getTutoFromUtente(this.utente);
 		return "tutos";
 	}
-	
+	public List<Tuto> getTutoFromUtente(Utente utente){
+		this.tutos = tutoFacade.getTutoFromUtente(utente);
+		System.out.println("I tuto di "+utente.getUsername());
+		return this.tutos;
+	}
 	public Tuto getTutoFromId(Long id) {
 		this.tuto = tutoFacade.findById(id);
 		return tuto;

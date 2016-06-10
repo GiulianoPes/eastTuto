@@ -27,8 +27,9 @@ public class UtenteFacade{
 		return utente;
 	}
 
-	public void update(Utente utente){
+	public Utente update(Utente utente){
 		em.merge(utente);
+		return utente;
 	}
 
 	public Utente findById(long id) {
@@ -82,5 +83,19 @@ public class UtenteFacade{
 			utente = list.get(0);
 		}
 		return utente; 
+	}
+	public List<Utente> getFollowing(Utente utente){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Utente> cq = cb.createQuery(Utente.class);//Riporta dei tuto
+		Root rootUtente = cq.from(Utente.class);//Tabella dei tuto
+		
+		/*
+		ParameterExpression<Long> parameter = cb.parameter(Long.class);//
+		parameter.alias(utente.getId().toString());       
+		*/
+		cq.where(cb.equal(rootUtente.get("utente"), utente));
+		List<Utente> following = em.createQuery(cq).getResultList();
+		
+		return following;
 	}
 }

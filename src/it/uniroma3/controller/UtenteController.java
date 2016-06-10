@@ -4,9 +4,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.view.facelets.FaceletContext;
 
 import it.uniroma3.model.Utente;
 import it.uniroma3.model.UtenteFacade;
@@ -23,7 +20,9 @@ public class UtenteController{
 	private Utente utente;
 	@ManagedProperty(value="#{sessionController}")
 	private SessionController sessionController;
+	
 	private List<Utente> utenti;
+	private List<Utente> following;
 	
 	@EJB
 	private UtenteFacade utenteFacade;
@@ -56,6 +55,23 @@ public class UtenteController{
 		System.out.println(utente.getFollowing().size());}
 		return this.utente;
 	}
+	public List<Utente> getFollowFromUtente(Utente utente){
+		this.following = utenteFacade.getFollowing(this.utente);
+		return this.following;
+	}
+
+	public String addFollowing(){
+		//System.out.println("chiamo sesssion controller add following "+this.utente.getUsername());
+		this.sessionController.addFollowing(this.utente);
+		return "Following";
+	}
+	public String addFollowing(String following){
+		this.utente = this.myProfile(following);
+		//System.out.println("chiamo sesssion controller add following "+this.utente.getUsername());
+		this.sessionController.addFollowing(this.utente);
+		return "Following";
+	}
+	
 	
 	//Getter and setter
 
@@ -110,6 +126,14 @@ public class UtenteController{
 
 	public void setUtenti(List<Utente> utenti) {
 		this.utenti = utenti;
+	}
+
+	public List<Utente> getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(List<Utente> following) {
+		this.following = following;
 	}
 
 

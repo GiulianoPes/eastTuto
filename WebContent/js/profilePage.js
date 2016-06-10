@@ -7,10 +7,11 @@ $(document).ready(function(){
 	$('#follow').click(function(event){
 
 		userNameHash = location.hash;
-		userName = location.hash.substring(1,userNameHash.size);
-
+		userName = location.hash.substring(6,userNameHash.size);
+		//alert(userName);
+		
 		$.ajax({
-			url: 'addFollowing',
+			url: 'followCall.xhtml',
 			type: 'post',
 			data: 'name_following='+userName,
 			success: function(result){
@@ -19,6 +20,9 @@ $(document).ready(function(){
 			}
 		});
 		
+	});
+	$('.follower').click(function(event){
+		window.location.hash = "user:"+$(this).attr("id");
 	});
 	
 });
