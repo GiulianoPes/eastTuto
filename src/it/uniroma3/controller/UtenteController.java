@@ -18,6 +18,10 @@ public class UtenteController{
 	private String password;	
 	
 	private Utente utente;
+	
+	private Long idUtente;
+	private Long idUtenteDaSeguire;
+	
 	@ManagedProperty(value="#{sessionController}")
 	private SessionController sessionController;
 	
@@ -43,11 +47,18 @@ public class UtenteController{
 		return this.utenti;
 	}
 	
+	public double getTotalMoneyFromTuto() {
+		return this.utente.getTotalMoney();
+	}
+	
+	/*
 	public String myProfile(Long id){
 		this.utente = utenteFacade.findById(id);
 		return "profilePage.jsp";
 	}
+	*/
 	public Utente myProfile(String username){
+		System.out.println("CHIAMATA A MYPROFILE: "+username);
 		this.utente = utenteFacade.findByUsername(username);
 		System.out.println("Chiamata a myProfile "+username);
 		if(this.utente!=null){
@@ -60,17 +71,29 @@ public class UtenteController{
 		return this.following;
 	}
 
+	public void addFollowing() {
+		System.out.println("---------SONO ENTRATO ----------");
+		System.out.println("--------VEDIAMO L'UTENTE --------");
+		//System.out.println("UTENTE: " + idUtente);
+		//System.out.println("UTENTE DA SEGUIRE :" + idUtenteDaSeguire);
+		//utenteLoggato.addFollowing(utenteDaSeguire);
+		//utenteFacade.update(utenteLoggato);
+	}
+	
+	/*
 	public String addFollowing(){
 		//System.out.println("chiamo sesssion controller add following "+this.utente.getUsername());
 		this.sessionController.addFollowing(this.utente);
 		return "Following";
 	}
+	
 	public String addFollowing(String following){
 		this.utente = this.myProfile(following);
 		//System.out.println("chiamo sesssion controller add following "+this.utente.getUsername());
 		this.sessionController.addFollowing(this.utente);
 		return "Following";
 	}
+	*/
 	
 	
 	//Getter and setter

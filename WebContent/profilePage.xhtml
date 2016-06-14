@@ -2,100 +2,117 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich">  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 <head>
 
-	
-	<link rel="stylesheet" href="css/style_personal.css" />
-	<link rel="stylesheet" href="css/style_tuto.css" />
-	<link rel="stylesheet" href="css/style_follower.css" />
-	
-	<script src="js/tuto.js"></script>
-	<script src="js/profilePage.js"></script>
+
+<link rel="stylesheet" href="css/style_personal.css" />
+<link rel="stylesheet" href="css/style_tuto.css" />
+<link rel="stylesheet" href="css/style_follower.css" />
+
+<script src="js/tuto.js"></script>
+<script src="js/profilePage.js"></script>
 </head>
 
 
 
-<body>	
-					 <!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
-					<ui:param name="username" value="#{param['username']}"></ui:param>
-					
-					<c:choose>
-					    <c:when test="${not empty utenteController.myProfile(username)}">
-					    <!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
-						
-						<ui:param name="utenteProfile" value="#{utenteController.utente}"></ui:param>
-						${utenteProfile.setTuto(tutoController.getTutoFromUtente(utenteProfile))}
-						
-					    <table style="width: 100%;">
+<body>
+	<!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
+	<ui:param name="username" value="#{param['username']}"></ui:param>
+	<ui:param name="utenteProfile" value="${utenteController.utente}"></ui:param>
+	<ui:param name="idUtenteProfile" value="${utenteProfile.id}"></ui:param>
+	<ui:param name="idUtenteLoggato" value="${uteteLogged.id}"></ui:param>
 	
-							<col width="20%" />
-							<col width="60%" />
-							<col width="20%" />
-							<tr>
-								<td colspan="3">
-									<div id="personalUpperBox">
-								    	<h1>${utenteProfile.username}</h1>
-										<c:if test="${(not empty utenteLogged) and (!utenteLogged.equals(utenteProfile))}">
-											<ui:param name="seguo" value="follow"></ui:param>
-											<c:if test="#{utenteLogged.isFollowing(utenteProfile)}">
-												<ui:param name="seguo" value="following"></ui:param>								
-											</c:if>
-											<div id="followingBox">
-												<input class="profileBoxFormInput"  type="button" value="${seguo}" id="follow" />
-											</div>	
-										</c:if>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div id="followerBox">
-										<div>
-											${utenteProfile.getFollowing().size()} Following<br />
-											<ui:repeat var="follow" value="${utenteProfile.getFollowing().toArray()}">
-												<ui:include src="templates/follower.xhtml" >
-								  					<ui:param name="follow" value="#{follow}"></ui:param> 
-												</ui:include>
-											</ui:repeat>
-										</div>
-									</div>
-								</td>
-								<td>
-									<div id="myTutoBox">
-									
-										<ui:repeat var="tuto" value="${utenteProfile.getTuto()}">
-											<ui:include src="templates/tuto.xhtml" >
-							  					<ui:param name="tuto" value="#{tuto}"></ui:param> 
-											</ui:include>
-										</ui:repeat>
-									</div>
-								</td>
-								<td>
-									<div id="categoryBox">categorie</div>
-								</td>
-							</tr>
-						</table>
+	
+	
+	<c:choose>
+		<c:when test="${not empty utenteController.myProfile(username)}">
+			<!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
+						
+						
+			${utenteProfile.setTuto(tutoController.getTutoFromUtente(utenteProfile))}
+						
+			<table style="width: 100%;">
+
+				<col width="20%" />
+				<col width="60%" />
+				<col width="20%" />
+				<tr>
+					<td colspan="3">
+						<div id="personalUpperBox">
+							<h1>${utenteProfile.username}</h1>
 							
-					    </c:when>    
-					    <c:otherwise>
-					    <table style="width: 100%;">
-							<tr>
-								<td>
-									<div id="personalUpperBox">
-						       			 <h1>Utente inesistente</h1>
-									</div>
-								</td>
-							</tr>
-						</table>
-					    </c:otherwise>
-					</c:choose>			
-				
+							<c:if
+								test="${(not empty utenteLogged) and (!utenteLogged.equals(utenteProfile))}">
+								<ui:param name="seguo" value="follow"></ui:param>
+								<c:if test="#{utenteLogged.isFollowing(utenteProfile)}">
+									<ui:param name="seguo" value="following"></ui:param>
+								</c:if>
+								<div id="followingBox">
+									<h:form>
+										<h:commandButton styleClass="profileBoxFormInput"
+											value="${seguo}"
+											action="#{utenteController.addFollowing}" >
+										</h:commandButton>
+									</h:form>
+								</div>
+							</c:if>
+							
+							<c:if test="${(not empty utenteLogged) and (utenteLogged.equals(utenteProfile))}">
+								<h4>Guadagni totali: <b>${utenteProfile.getTotalMoney()} €</b></h4>
+							</c:if>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="followerBox">
+							<div>
+								${utenteProfile.getFollowing().size()} Following<br />
+								<ui:repeat var="follow"
+									value="${utenteProfile.getFollowing().toArray()}">
+									<ui:include src="templates/follower.xhtml">
+										<ui:param name="follow" value="#{follow}"></ui:param>
+									</ui:include>
+								</ui:repeat>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id="myTutoBox">
+
+							<ui:repeat var="tuto" value="${utenteProfile.getTuto()}">
+								<ui:include src="templates/tuto.xhtml">
+									<ui:param name="tuto" value="#{tuto}"></ui:param>
+								</ui:include>
+							</ui:repeat>
+						</div>
+					</td>
+					<td>
+						<div id="categoryBox">categorie</div>
+					</td>
+				</tr>
+			</table>
+
+		</c:when>
+		<c:otherwise>
+			<table style="width: 100%;">
+				<tr>
+					<td>
+						<div id="personalUpperBox">
+							<h1>Utente inesistente</h1>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</c:otherwise>
+	</c:choose>
+
 
 </body>
 </html>

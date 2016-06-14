@@ -45,6 +45,14 @@
 				<td style="text-align: right;">
 					<c:if test="${(not empty utenteLogged) and (utenteProfile.equals(utenteLogged))}">
 						Guadagno: <b style="font-weight:bold;">${money} €</b>
+						<br></br>
+						<h:form>
+							<h:commandButton style="height: 30px;" value="Modifica" type="submit" action="#{categoriaController.initCategorieModifica}"/>
+						</h:form>
+						
+						<h:form>
+							<h:commandButton style="height: 30px;" value="Elimina" type="submit" action="#{categoriaController.initCategorieModifica}"/>
+						</h:form>
 					</c:if>
 				</td>
 			</tr>

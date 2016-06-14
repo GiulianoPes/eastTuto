@@ -32,6 +32,12 @@ public class CategoriaController {
 		return "compileTuto.jsp";
 	}
 	
+	public String initCategorieModifica() {
+		this.categorie = categoriaFacade.findAll();
+		System.out.println(this.categorie.toString());
+		return "editTuto.jsp";
+	}
+	
 	public List<Categoria> getCategorie(){
 		this.categorie = categoriaFacade.findAll();
 		return this.categorie;

@@ -75,6 +75,14 @@ public class Utente {
 		this.password = password;
 	}
 	
+	public double getTotalMoney() {
+		double total = 0;
+		for (Tuto t : this.tuto) {
+			total += t.getMoney();
+		}
+		return total;
+	}
+	
 	//Lista dei Tuto
 	public void addTuto(Tuto tuto){
 		this.tuto.add(tuto);

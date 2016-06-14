@@ -67,6 +67,10 @@ public class Tuto {
 		this.nome = nome;
 	}
 
+	public double getMoney() {
+		return (this.visualizzazioni/1000)*0.1;
+	}
+	
 	public String getDescrizione() {
 		return descrizione;
 	}
