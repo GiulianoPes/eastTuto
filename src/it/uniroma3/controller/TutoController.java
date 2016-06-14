@@ -31,6 +31,8 @@ public class TutoController{
 	private Tuto tuto;
 	private List<Tuto> tutos;
 	
+	private double money;
+	
 	@EJB
 	private TutoFacade tutoFacade;
 	@EJB
@@ -57,6 +59,32 @@ public class TutoController{
 		this.tuto = tutoFacade.save(this.tuto);
 		System.out.println("Finito di creare");
 		return "index.xhtml"; 
+	}
+
+	public double getMoneyFromTutoForUser(Tuto tuto) {
+		double money;
+		// 1000 visualizzazioni = 1 €
+		money = (tuto.getVisualizzazioni()/1000)*0.1;
+		return money;
+	}
+	
+	public int aggiungiVisualizzazione(Tuto tuto) {
+		System.out.println("------SONO DENTRO AGGIUNGI VISUALIZZAZIONE---------");
+
+		int visualizzazioni = tuto.getVisualizzazioni();
+		visualizzazioni++;
+		tuto.setVisualizzazioni(visualizzazioni);
+		
+		tutoFacade.update(tuto);
+		
+		return tuto.getVisualizzazioni();
+	}
+	
+	public double getMoneyFromTutoForEasyTuto(Tuto tuto) {
+		double money;
+		// 1000 visualizzazioni = 1 €
+		money = (tuto.getVisualizzazioni()/1000);
+		return money;
 	}
 	
 	public List<Tuto> initTuto(){

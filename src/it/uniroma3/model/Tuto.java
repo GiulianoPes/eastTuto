@@ -1,5 +1,6 @@
 package it.uniroma3.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -28,6 +29,9 @@ public class Tuto {
 	@Column
 	private String descrizione;
 	
+	@Column
+	private int visualizzazioni;
+
 	@Temporal(TemporalType.DATE)
     private Date dataCreazione;
 	
@@ -89,6 +93,14 @@ public class Tuto {
 	
 	public Categoria getCategoria(){
 		return this.categoria;
+	}
+	
+	public int getVisualizzazioni() {
+		return visualizzazioni;
+	}
+
+	public void setVisualizzazioni(int visualizzazioni) {
+		this.visualizzazioni = visualizzazioni;
 	}
 	
 	public void setCategoria(Categoria categoria){

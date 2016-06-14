@@ -9,12 +9,49 @@
     xmlns:rich="http://richfaces.org/rich">
 	<head>
 	<title>Tuto's details</title>
+	
+	<script type="text/javascript">
+		/*
+		$(document).ready(function () {
+			$.ajax({
+				url: 'faces/profilePage.xhtml', 
+				type: 'post', 
+				data:'tuto='+${currentTuto}, 
+				success: function(result) {
+					alert(result);
+				}
+			});
+		});
+		*/
+	</script>
 </head>
+
 <body>
+
 	<ui:param name="tutoId" value="#{param['tutoId']}"></ui:param>
 	<ui:param name="currentTuto" value="${tutoController.getTutoFromId(tutoId)}"></ui:param>
+	<ui:param name="utenteProfile" value="${currentTuto.getUtente()}"></ui:param>
+	<ui:param name="money" value="${tutoController.getMoneyFromTutoForUser(currentTuto)}"></ui:param>
+	<ui:param name="visualizzazioni" value="${tutoController.aggiungiVisualizzazione(currentTuto)}"></ui:param>
 	
 	<h1>${currentTuto.nome}</h1>
+	
+	<br></br>
+	
+	<center>
+		<table style="width: 50%;">
+			<tr>
+				<td style="text-align: left;">Visualizzazioni: <b style="font-weight:bold;">${visualizzazioni}</b></td>
+				<td style="text-align: right;">
+					<c:if test="${(not empty utenteLogged) and (utenteProfile.equals(utenteLogged))}">
+						Guadagno: <b style="font-weight:bold;">${money} €</b>
+					</c:if>
+				</td>
+			</tr>
+		</table>
+	</center>
+	
+	<br></br>
 	
 	<table style="width: 100%; height: 650px;">
 		<col width="20%" />
