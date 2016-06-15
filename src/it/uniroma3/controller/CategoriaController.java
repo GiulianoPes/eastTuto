@@ -1,5 +1,7 @@
 package it.uniroma3.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -30,6 +32,20 @@ public class CategoriaController {
 		this.categorie = categoriaFacade.findAll();
 		System.out.println(this.categorie.toString());
 		return "compileTuto.jsp";
+	}
+	
+	public void set8Categorie(){
+		List<Categoria> categorie = categoriaFacade.findAll();
+		Iterator<Categoria> iterator = categorie.iterator();
+		
+		this.categorie = new ArrayList<Categoria>();		
+		int i=0;
+		while((i<8) && (iterator.hasNext())){
+			this.categorie.add(iterator.next());
+		}
+		
+		System.out.println(this.categorie);
+		//return this.categorie;
 	}
 	
 	public List<Categoria> inizializzaCategorie() {

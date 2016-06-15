@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
 	$('.categoryItem').click(function(event){
+		id_categoria = $(this).attr("id");
+		alert(id_categoria);
 		$.ajax({
 			url: 'viewCategory',
 			type: 'post',
