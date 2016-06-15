@@ -26,6 +26,7 @@
 	-moz-box-shadow:3px 3px 1px #165346;
     -webkit-box-shadow:3px 3px 1px  #165346;
     box-shadow:3px 3px 1px  #165346;
+    cursor: pointer;
 }
 
 #pesca{	background-image: url("../img/category/pesca.jpg");	}
