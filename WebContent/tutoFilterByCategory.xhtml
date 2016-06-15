@@ -32,8 +32,7 @@
 		
 			
 	<div id="myTutoBox">
-
-		<ui:repeat var="tuto" value="${tutoController.getTutoFromCategoria()}">
+		<ui:repeat var="tuto" value="${tutoController.getTutoFromCategoria(categoria)}">
 			<ui:include src="templates/tuto.xhtml">
 				<ui:param name="tuto" value="#{tuto}"></ui:param>
 			</ui:include>

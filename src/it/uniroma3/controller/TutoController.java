@@ -64,7 +64,7 @@ public class TutoController{
 		return "index.xhtml"; 
 	}
 	
-	public List<Tuto> getTutoFromCategoria(Categoria categoria){
+	public List<Tuto> getTutoFromCategoria(Categoria categoria) {
 		List<Tuto> lista = tutoFacade.getTutoFromCategoria(categoria);  
 		return lista;    
 	}
