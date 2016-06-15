@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
 	$('.categoryItem').click(function(event){
+		id_categoria = $(this).attr("id");
+		window.location.hash = "cate:"+id_categoria;
+		
+		/*
 		$.ajax({
 			url: 'viewCategory',
 			type: 'post',
@@ -9,6 +13,7 @@ $(document).ready(function(){
 				$(".container").html(result);
 			}
 		});
+		*/
 	})
 	/*
 	$.ajax({		

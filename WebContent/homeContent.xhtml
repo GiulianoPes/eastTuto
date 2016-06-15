@@ -15,38 +15,58 @@
 <link rel="stylesheet" href="css/style_tuto.css"></link>
 </h:head>
 <h:body>
+<!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
+<ui:param name="categorie" value="${categoriaController.set8Categorie()}"></ui:param>
 
 <div class="box" id="categoryBox">
+	<h3>${categoriaController.categorie.get(0).getId()}</h3>
+	<!--  <h3>${categorie.get(0).getId()}</h3>-->
 	<table>
-		<tr>
-			<td>
-				<div class="categoryItem" id="giardinaggio"></div>
-			</td>
-			<td>
-				<div class="categoryItem" id="sport"></div>
-			</td>
-			<td>
-				<div class="categoryItem" id="home_made"></div>
-			</td>
-			<td>
-				<div class="categoryItem" id="pesca"></div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="categoryItem" id="cucinare"></div>
-			</td>
-			<td>
-				<div class="categoryItem" id="home_made"></div>
-			</td>
-			<td>
-				<div class="categoryItem" id="giardinaggio"></div>
-			</td>
-			<td>
-				<div class="categoryItem" id="cucinare"></div>
-			</td>
-		</tr>
-
+	<tr>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(0).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(0).getImmagine()}"></img>
+			</div>
+		</td>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(1).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(1).getImmagine()}"></img>
+			</div>
+		</td>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(2).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(2).getImmagine()}"></img>
+			</div>
+		</td>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(3).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(3).getImmagine()}"></img>
+			</div>
+		</td>
+	</tr>	
+	<tr>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(4).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(4).getImmagine()}"></img>
+			</div>
+		</td>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(5).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(5).getImmagine()}"></img>
+			</div>
+		</td>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(6).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(6).getImmagine()}"></img>
+			</div>
+		</td>
+		<td>
+			<div class="categoryItem" id="${categoriaController.categorie.get(7).getId()}">
+				<img src="img/category/${categoriaController.categorie.get(7).getImmagine()}"></img>
+			</div>
+		</td>
+	</tr>
+	
 	</table>
 </div>
 <div class="box" id="lastTuto" style="padding-bottom: 10px;">
