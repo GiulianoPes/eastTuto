@@ -43,6 +43,7 @@ public class TutoController{
 	private CategoriaFacade categoriaFacade;
 	
 	public String creaTuto() {
+		System.out.println(" - SONO ENTRATO NEL CREA TUTO - ");
 		System.out.println("---------------------"+categoriaNome);
 		this.dataCreazione = new Date(System.currentTimeMillis());
 		
