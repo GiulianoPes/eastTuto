@@ -20,11 +20,14 @@ public class Categoria {
 	@Column(unique = true)
 	private String nome;
 	
-	//Una categoria può appartenere a molti tuto
+	//Una categoria puï¿½ appartenere a molti tuto
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     //@JoinColumn(name = "categoria_id")
 	private List<Tuto> tuto;
 	
+	@Column(unique = true)
+	private String immagine;
+
 	public Categoria(){
 		this.tuto = new ArrayList<>();
 	}
@@ -60,6 +63,14 @@ public class Categoria {
 	
 	public void addTuto(Tuto tuto){
 		this.tuto.add(tuto);
+	}
+	
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
 
 	@Override
