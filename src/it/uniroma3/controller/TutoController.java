@@ -3,6 +3,7 @@ package it.uniroma3.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -18,7 +19,7 @@ import it.uniroma3.model.Utente;
 @ManagedBean
 public class TutoController{
 	
-	@ManagedProperty(value="#{param.id}")
+	@ManagedProperty(value="#{param.tuto_id}")
 	private Long id;
 	private String nome;
 	private String descrizione;
@@ -92,11 +93,17 @@ public class TutoController{
 		return "index.xhtml"; 
 	}
 	
+	public void eliminaTuto(Tuto tutoDaEliminare) {
+		System.out.println("------SONO NELL ELIMINA ------");
+		System.out.println("ID: " + this.id);
+		this.tuto = tutoFacade.findById(id);
+		tutoFacade.delete(this.tuto);
+	}
 	public String eliminaTuto() {
 		System.out.println("------SONO NELL ELIMINA ------");
-		System.out.println("ID: " + this.tuto.getNome());
-		//this.tuto = tutoFacade.findById(id);
-		//tutoFacade.delete(this.tuto);
+		System.out.println("ID: " + this.id);
+		this.tuto = tutoFacade.findById(id);
+		tutoFacade.delete(this.tuto);
 		return "index.xhtml";
 	}
 	
@@ -104,6 +111,12 @@ public class TutoController{
 		double money;
 		// 1000 visualizzazioni = 1 €
 		money = (tuto.getVisualizzazioni()/1000)*0.1;
+		return money;
+	}
+	public double getMoneyFromTutoForUser() {
+		double money;
+		// 1000 visualizzazioni = 1 €
+		money = (this.tuto.getVisualizzazioni()/1000)*0.1;
 		return money;
 	}
 	
@@ -118,11 +131,29 @@ public class TutoController{
 		
 		return tuto.getVisualizzazioni();
 	}
+	public int aggiungiVisualizzazione() {
+		System.out.println("------SONO DENTRO AGGIUNGI VISUALIZZAZIONE---------");
+
+		int visualizzazioni = this.tuto.getVisualizzazioni();
+		visualizzazioni++;
+		this.tuto.setVisualizzazioni(visualizzazioni);
+		
+		tutoFacade.update(this.tuto);
+		
+		return this.tuto.getVisualizzazioni();
+	}
 	
 	public double getMoneyFromTutoForEasyTuto(Tuto tuto) {
 		double money;
 		// 1000 visualizzazioni = 1 €
 		money = (tuto.getVisualizzazioni()/1000);
+		return money;
+	}
+	
+	public double getMoneyFromTutoForEasyTuto() {
+		double money;
+		// 1000 visualizzazioni = 1 €
+		money = (this.tuto.getVisualizzazioni()/1000);
 		return money;
 	}
 	
@@ -144,12 +175,24 @@ public class TutoController{
 	}
 	public Tuto getTutoFromId(Long id) {
 		this.tuto = tutoFacade.findById(id);
+		System.out.println("Riporto il tuto per id "+id);
 		return tuto;
 	}
 	
-	public void setTutoFromId(Long id) {
-		this.tuto = tutoFacade.findById(id);
+	public boolean setTutoFromId() {
+		System.out.println(this.id);
+		this.tuto = tutoFacade.findById(this.id);
+		System.out.println("Ho settato il tuto");
+		return true;
 	}
+	//@PostConstruct
+	public void init(){
+		System.out.println("bella");
+		if(this.id != null){
+			this.setTutoFromId();
+		}
+	}
+ 
 
 	public Long getId() {
 		return id;
