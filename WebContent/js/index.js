@@ -67,7 +67,7 @@ $(document).ready(function(){
 					$("body").html(result);
 				}
 			});
-		} else if (ash.substring(1,5)=="cate") {
+		} else if (hash.substring(1,5)=="cate") {
 			categoryHash = hash.substring(6, hash.size);
 			$.ajax({
 				url: 'faces/tutoFilterByCategory.xhtml', 

@@ -12,7 +12,7 @@ import it.uniroma3.model.CategoriaFacade;
 @ManagedBean
 public class CategoriaController {
 	
-	@ManagedProperty(value="#{param.id}")
+	@ManagedProperty(value="#{param.categoryId}")
 	private Long id;
 	private String nome;
 	
@@ -21,6 +21,10 @@ public class CategoriaController {
 	
 	@EJB
 	private CategoriaFacade categoriaFacade;
+	
+	public Categoria findById(Long id){
+		return categoriaFacade.findById(id); 
+	}
 	
 	public Categoria creaCategoria(){
 		Categoria categoria = new Categoria(nome);

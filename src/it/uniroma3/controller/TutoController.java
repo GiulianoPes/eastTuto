@@ -63,6 +63,11 @@ public class TutoController{
 		System.out.println("Finito di creare");
 		return "index.xhtml"; 
 	}
+	
+	public List<Tuto> getTutoFromCategoria(Categoria categoria){
+		List<Tuto> lista = tutoFacade.getTutoFromCategoria(categoria);  
+		return lista;    
+	}
 
 	public String modificaTuto() {
 		System.out.println("SONO ENTRATO IN MODIFCA: ");

@@ -24,6 +24,7 @@
 <body>
 	<!-- INIZIALIZZO I PARAMETRI DEL PROFILO -->
 	<ui:param name="categoryId" value="#{param['categoryId']}"></ui:param>
+	<ui:param name="categoria" value="${categoriaController.findById(categoryId)}"></ui:param>
 	<ui:param name="utenteProfile" value="${utenteController.utente}"></ui:param>
 	<ui:param name="idUtenteProfile" value="${utenteProfile.id}"></ui:param>
 	<ui:param name="idUtenteLoggato" value="${uteteLogged.id}"></ui:param>
@@ -32,7 +33,7 @@
 			
 	<div id="myTutoBox">
 
-		<ui:repeat var="tuto" value="${tutoController.getTutoFromCategoria(categoryId)}">
+		<ui:repeat var="tuto" value="${tutoController.getTutoFromCategoria()}">
 			<ui:include src="templates/tuto.xhtml">
 				<ui:param name="tuto" value="#{tuto}"></ui:param>
 			</ui:include>
