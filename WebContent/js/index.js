@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
 	Hash = window.location.hash;
+	//alert(window.location);
+	if(window.location != "http://localhost:8080/easyTuto/"){
+		window.location = "/easyTuto/";
+	}
 	
 	window.onpopstate = function(e) {
 		//alert("onpop"+history.state.url+" ");
@@ -64,7 +68,7 @@ $(document).ready(function(){
 				type: 'post', 
 				data: 'tutoId='+tutoHash, 
 				success: function(result) {
-					$("body").html(result);
+					$("#container").html(result);
 				}
 			});
 		} else if (hash.substring(1,5)=="cate") {

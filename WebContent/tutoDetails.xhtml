@@ -36,7 +36,7 @@
 					<c:if test="${(tutoController.setTutoFromId()) and (not empty utenteLogged) and (utenteLogged.equals(utenteProfile))}">
 						Guadagno: <b style="font-weight:bold;">${money} €</b>
 						<br></br>
-						<input type="button" id="${tutoId}" class="editTutoButton" value="Modifica"></input>
+						<input type="button" id="${tutoController.getId()}" class="editTutoButton" value="Modifica"></input>
 						<h:form>
 							<h:commandButton value="Elimina" action="${tutoController.eliminaTuto()}">
 								<f:param name="tuto_id" value="${tutoController.getId()}"></f:param>
