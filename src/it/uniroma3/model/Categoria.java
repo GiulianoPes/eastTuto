@@ -26,6 +26,9 @@ public class Categoria {
 	private List<Tuto> tuto;
 	
 	@Column(unique = true)
+	private String descrizione;
+	
+	@Column(unique = true)
 	private String immagine;
 
 	public Categoria(){
@@ -71,6 +74,14 @@ public class Categoria {
 
 	public void setImmagine(String immagine) {
 		this.immagine = immagine;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	@Override

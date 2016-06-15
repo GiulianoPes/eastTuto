@@ -3,6 +3,8 @@ package it.uniroma3.controller;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -15,6 +17,8 @@ public class CategoriaController {
 	@ManagedProperty(value="#{param.categoryId}")
 	private Long id;
 	private String nome;
+	
+	private String descrizione;
 	
 	private Categoria categoria;
 	private List<Categoria> categorie;
@@ -52,6 +56,39 @@ public class CategoriaController {
 		//return this.categorie;
 	}
 	
+	@PostConstruct
+	public void inserisciCategorie() {
+		if (categoriaFacade.findAll().isEmpty()) {
+			Categoria c1,c2,c3,c4,c5,c6,c7,c8;
+			c1 = new Categoria("INFORMATICA");
+			c2 = new Categoria("ELETTRONICA");
+			c3 = new Categoria("MECCANICA");
+			c4 = new Categoria("CUCINA");
+			c5 = new Categoria("GIARDINAGGIO");
+			c6 = new Categoria("PESCA");
+			c7 = new Categoria("FALEGNAMERIA");
+			c8 = new Categoria("SPORT");
+			
+			c1.setImmagine("informatica.jpg");
+			c2.setImmagine("elettronica.jpg");
+			c3.setImmagine("meccanica.jpg");
+			c4.setImmagine("cucina.jpg");
+			c5.setImmagine("giardinaggio.jpg");
+			c6.setImmagine("pesca.jpg");
+			c7.setImmagine("falegnameria.jpg");
+			c8.setImmagine("sport.jpg");
+			
+			categoriaFacade.save(c1);
+			categoriaFacade.save(c2);
+			categoriaFacade.save(c3);
+			categoriaFacade.save(c4);
+			categoriaFacade.save(c5);
+			categoriaFacade.save(c6);
+			categoriaFacade.save(c7);
+			categoriaFacade.save(c8);
+		}
+	}
+	
 	public List<Categoria> inizializzaCategorie() {
 		this.categorie = categoriaFacade.findAll();
 		return this.categorie;
@@ -77,6 +114,14 @@ public class CategoriaController {
 		this.nome = nome;
 	}
 
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	
+	public String getDescrizione() {
+		return this.descrizione;
+	}
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
