@@ -21,6 +21,7 @@ public class TutoController{
 	
 	@ManagedProperty(value="#{param.tuto_id}")
 	private Long id;
+	@ManagedProperty(value="#{param.nome}")
 	private String nome;
 	private String descrizione;
 	private Date dataCreazione;
@@ -68,7 +69,7 @@ public class TutoController{
 		List<Tuto> lista = tutoFacade.getTutoFromCategoria(categoria);  
 		return lista;    
 	}
-
+	
 	public String modificaTuto() {
 		System.out.println("SONO ENTRATO IN MODIFCA: ");
 		
@@ -100,13 +101,14 @@ public class TutoController{
 	
 	public void eliminaTuto(Tuto tutoDaEliminare) {
 		System.out.println("------SONO NELL ELIMINA ------");
-		System.out.println("ID: " + this.id);
+		System.out.println("ID: " + this.nome);
 		this.tuto = tutoFacade.findById(id);
 		tutoFacade.delete(this.tuto);
 	}
 	public String eliminaTuto() {
 		System.out.println("------SONO NELL ELIMINA ------");
 		System.out.println("ID: " + this.id);
+		System.out.println("ID: " + this.nome);
 		this.tuto = tutoFacade.findById(id);
 		tutoFacade.delete(this.tuto);
 		return "index.xhtml";
