@@ -67,6 +67,16 @@ $(document).ready(function(){
 					$("body").html(result);
 				}
 			});
+		} else if (ash.substring(1,5)=="cate") {
+			categoryHash = hash.substring(6, hash.size);
+			$.ajax({
+				url: 'faces/tutoFilterByCategory.xhtml', 
+				type: 'post', 
+				data: 'categoryId='+categoryHash, 
+				success: function(result) {
+					$("#container").html(result);
+				}
+			});
 		} else {
 			window.location = "/easyTuto/";
 		}

@@ -41,6 +41,17 @@ public class TutoFacade {
 		em.merge(tuto);
 	}
 
+	public List<Tuto> getTutoFromCategoria(Long id){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Tuto> cq = cb.createQuery(Tuto.class);//Riporta dei tuto
+		Root rootTuto = cq.from(Tuto.class);//Tabella dei tuto
+		  
+		cq.where(cb.equal(rootTuto.get("categoria_id"), id));
+		        
+		List<Tuto> listaTuto = em.createQuery(cq).getResultList();
+		return listaTuto;
+	}
+	
 	public List<Tuto> findAll(){
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Tuto> cq = cb.createQuery(Tuto.class);	
