@@ -17,14 +17,13 @@
 </head>
 
 <body>
-
+	
 	<ui:param name="tutoId" value="#{param['tutoId']}"></ui:param>
-	<ui:param name="currentTuto" value="${tutoController.getTutoFromId(tutoId)}"></ui:param>
+	${tutoController.setTutoFromId(tutoId)}
+	<ui:param name="currentTuto" value="${tutoController.tuto}"></ui:param>
 	<ui:param name="utenteProfile" value="${currentTuto.getUtente()}"></ui:param>
 	<ui:param name="money" value="${tutoController.getMoneyFromTutoForUser(currentTuto)}"></ui:param>
 	<ui:param name="visualizzazioni" value="${tutoController.aggiungiVisualizzazione(currentTuto)}"></ui:param>
-	
-	${tutoController.setTuto(currentTuto)}
 	
 	<h1>${currentTuto.nome}</h1>
 	
@@ -40,7 +39,7 @@
 						<br></br>
 						<input type="button" id="${tutoId}" class="editTutoButton" value="Modifica"></input>
 						<h:form>
-							<h:commandButton value="Elimina" action="#{tutoController.eliminaTuto}"></h:commandButton>
+							<h:commandButton value="Elimina" action="${tutoController.eliminaTuto}"></h:commandButton>
 						</h:form>
 					</c:if>
 				</td>

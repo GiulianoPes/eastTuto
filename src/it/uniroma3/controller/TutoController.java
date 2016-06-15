@@ -94,7 +94,7 @@ public class TutoController{
 	
 	public String eliminaTuto() {
 		System.out.println("------SONO NELL ELIMINA ------");
-		System.out.println("ID: " + this.tuto);
+		System.out.println("ID: " + this.tuto.getNome());
 		//this.tuto = tutoFacade.findById(id);
 		//tutoFacade.delete(this.tuto);
 		return "index.xhtml";
@@ -145,6 +145,10 @@ public class TutoController{
 	public Tuto getTutoFromId(Long id) {
 		this.tuto = tutoFacade.findById(id);
 		return tuto;
+	}
+	
+	public void setTutoFromId(Long id) {
+		this.tuto = tutoFacade.findById(id);
 	}
 
 	public Long getId() {
