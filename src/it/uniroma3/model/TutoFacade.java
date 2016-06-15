@@ -46,7 +46,7 @@ public class TutoFacade {
 		CriteriaQuery<Tuto> cq = cb.createQuery(Tuto.class);//Riporta dei tuto
 		Root rootTuto = cq.from(Tuto.class);//Tabella dei tuto
 		  
-		cq.where(cb.equal(rootTuto.get("categoria_id"), categoria));
+		cq.where(cb.equal(rootTuto.get("categoria"), categoria));
 		        
 		List<Tuto> listaTuto = em.createQuery(cq).getResultList();
 		return listaTuto;
