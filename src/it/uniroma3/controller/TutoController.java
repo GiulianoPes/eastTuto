@@ -65,6 +65,29 @@ public class TutoController{
 		System.out.println("Finito di creare");
 		return "index.xhtml"; 
 	}
+	public String creaTuto2() {
+		System.out.println(" - SONO ENTRATO NEL CREA TUTO - ");
+		System.out.println("---------------------"+categoriaNome);
+	/*	this.dataCreazione = new Date(System.currentTimeMillis());
+		
+		this.categoria = categoriaFacade.findByName(categoriaNome);
+		System.out.println(this.categoria);
+		
+		//Creao il tuto
+		this.tuto = new Tuto();
+		this.tuto.setNome(nome);
+		this.tuto.setDescrizione(descrizione);
+		this.tuto.setDataCreazione(dataCreazione);
+		this.tuto.setCategoria(this.categoria);
+		//Utente in sessione
+		FacesContext context = FacesContext.getCurrentInstance();
+		this.utente = (Utente) context.getExternalContext().getSessionMap().get("utenteLogged");
+		this.tuto.setUtente(utente);
+		//Lo salvo
+		this.tuto = tutoFacade.save(this.tuto);*/
+		System.out.println("Finito di creare");
+		return "index.xhtml"; 
+	}
 	
 	public List<Tuto> getTutoFromCategoria(Categoria categoria) {
 		List<Tuto> lista = tutoFacade.getTutoFromCategoria(categoria);  
