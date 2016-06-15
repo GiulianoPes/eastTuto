@@ -113,6 +113,19 @@ $(document).ready(function(){
 		}
 	});
 	
+	$('#searchButton').click(function(event){
+		
+		//alert($('#searchBar').val());
+		$.ajax({
+			url: 'faces/search.xhtml', 
+			type: 'post', 
+			data: 'search='+$('#searchBar').val(), 
+			success: function(result) {
+				$("#container").html(result);
+			}
+		});
+	});
+	
 	
 	
 	var setCurrentPage = function(url) {

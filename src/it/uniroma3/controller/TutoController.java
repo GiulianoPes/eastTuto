@@ -10,6 +10,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.apache.openejb.config.SystemPropertiesOverride;
+
 import it.uniroma3.model.Categoria;
 import it.uniroma3.model.CategoriaFacade;
 import it.uniroma3.model.Tuto;
@@ -112,6 +114,7 @@ public class TutoController{
 	public List<Tuto> cerca(String search){
 		System.out.println("Cerco --------- "+search);
 		List<Tuto> tutoFind = this.tutoFacade.research(search);
+		System.out.println(tutoFind.toString());
 		return tutoFind;
 	}
 	public String modificaTuto() {
