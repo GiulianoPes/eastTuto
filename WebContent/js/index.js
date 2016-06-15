@@ -52,7 +52,7 @@ $(document).ready(function(){
 			$.ajax({
 				url: 'faces/tutoDetails.xhtml', 
 				type: 'post', 
-				data: 'tutoId='+tutoHash, 
+				data: 'tuto_Id='+tutoHash, 
 				success: function(result) {
 					$("#container").html(result);
 				}
