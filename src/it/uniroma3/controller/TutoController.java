@@ -107,10 +107,8 @@ public class TutoController{
 		tutoFacade.delete(this.tuto);
 	}
 	public String eliminaTuto() {
-		System.out.println("------SONO NELL ELIMINA ------");
-		System.out.println("ID: " + this.id);
-		System.out.println("ID: " + this.nome);
 		this.tuto = tutoFacade.findById(id);
+		System.out.println("------SONO NELL ELIMINA ------ elimino tuto: "+this.tuto.getId());
 		tutoFacade.delete(this.tuto);
 		return "index.xhtml";
 	}

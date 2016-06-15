@@ -38,7 +38,7 @@ public class TutoFacade {
 
 	public void delete(Tuto tuto){
 		//Tuto toRemove = 
-		em.merge(tuto);
+		em.remove(tuto);
 	}
 
 	public List<Tuto> getTutoFromCategoria(Categoria categoria){

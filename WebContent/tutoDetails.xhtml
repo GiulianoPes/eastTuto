@@ -39,7 +39,7 @@
 						<input type="button" id="${tutoId}" class="editTutoButton" value="Modifica"></input>
 						<h:form>
 							<h:commandButton value="Elimina" action="${tutoController.eliminaTuto()}">
-								<f:param name="nome" value="${tutoController.getId()}"></f:param>
+								<f:param name="tuto_id" value="${tutoController.getId()}"></f:param>
 							</h:commandButton>
 						</h:form>
 					</c:if>
