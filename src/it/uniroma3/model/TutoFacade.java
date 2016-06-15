@@ -40,6 +40,18 @@ public class TutoFacade {
 		//Tuto toRemove = 
 		em.remove(tuto);
 	}
+	public List<Tuto> research(String search){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Tuto> cq = cb.createQuery(Tuto.class);//Riporta dei tuto
+		Root rootTuto = cq.from(Tuto.class);//Tabella dei tuto
+		  
+		//cq.where(cb.like("HashSearch", search));
+		cq.where(cb.like(rootTuto.get("HashSearch"), search));
+		
+		        
+		List<Tuto> listaTuto = em.createQuery(cq).getResultList();
+		return listaTuto;
+	}
 
 	public List<Tuto> getTutoFromCategoria(Categoria categoria){
 		CriteriaBuilder cb = em.getCriteriaBuilder();

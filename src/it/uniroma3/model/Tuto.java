@@ -19,6 +19,14 @@ import javax.persistence.TemporalType;
 @Entity
 public class Tuto {
 
+	public String getHashSearch() {
+		return HashSearch;
+	}
+
+	public void setHashSearch(String hashSearch) {
+		HashSearch = hashSearch;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long id;
@@ -28,6 +36,9 @@ public class Tuto {
 	
 	@Column
 	private String descrizione;
+	
+	@Column
+	private String HashSearch;
 	
 	@Column
 	private int visualizzazioni;
@@ -42,6 +53,7 @@ public class Tuto {
 	@ManyToOne(cascade = {CascadeType.DETACH} ,fetch = FetchType.EAGER)
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
 	private Categoria categoria;
+
 
 	public Tuto(){}
 	
@@ -114,5 +126,6 @@ public class Tuto {
 	public String toString(){
 		return this.getId()+" - "+this.getNome();
 	}
+	
 }
 

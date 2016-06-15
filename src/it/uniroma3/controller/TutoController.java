@@ -19,12 +19,20 @@ import it.uniroma3.model.Utente;
 @ManagedBean
 public class TutoController{
 	
+	public String getHashSearch() {
+		return HashSearch;
+	}
+	public void setHashSearch(String hashSearch) {
+		HashSearch = hashSearch;
+	}
+
 	@ManagedProperty(value="#{param.tuto_id}")
 	private Long id;
 	@ManagedProperty(value="#{param.nome}")
 	private String nome;
 	private String descrizione;
 	private Date dataCreazione;
+	private String HashSearch;
 	
 	private String categoriaNome;	
 	private Categoria categoria;
@@ -58,10 +66,14 @@ public class TutoController{
 		this.tuto.setDescrizione(descrizione);
 		this.tuto.setDataCreazione(dataCreazione);
 		this.tuto.setCategoria(this.categoria);
+		
 		//Utente in sessione
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = (Utente) context.getExternalContext().getSessionMap().get("utenteLogged");
 		this.tuto.setUtente(utente);
+		
+		//Creo i dati per la ricerca
+		this.tuto.setHashSearch(nome+"&"+descrizione+"&"+utente.getUsername());
 		//Lo salvo
 		this.tuto = tutoFacade.save(this.tuto);
 		System.out.println("Finito di creare");
@@ -97,7 +109,11 @@ public class TutoController{
 		List<Tuto> lista = tutoFacade.getTutoFromCategoria(categoria);  
 		return lista;    
 	}
-	
+	public List<Tuto> cerca(String search){
+		System.out.println("Cerco --------- "+search);
+		List<Tuto> tutoFind = this.tutoFacade.research(search);
+		return tutoFind;
+	}
 	public String modificaTuto() {
 		System.out.println("SONO ENTRATO IN MODIFCA: ");
 		
@@ -315,4 +331,5 @@ public class TutoController{
 	public int getVisualizzazioni() {
 		return this.visualizzazioni;
 	}
+	
 }
