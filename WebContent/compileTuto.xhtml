@@ -10,8 +10,7 @@
 	<link rel="stylesheet" href="css/style_compileTuto.css" /> 
 </head>
 <body>	
-	<div class="wrapper">
-		<div class="container">
+	<div>
 			<h1>Compila un nuovo Tuto</h1>		
 			<f:view>
 				<h:form>
@@ -27,30 +26,18 @@
                     requiredMessage="descrizione obbligatoria"
                     id="descrizione" /> <h:message for="descrizione" />
 				</div>				
-				<div>Categoria:	
-				<h:selectOneMenu style="width: 40%; " value="#{tutoController.categoriaNome}">
-   					 <f:selectItems style="color:black;" value="#{categoriaController.categorie}" var="categoria" itemValue="#{categoria}" />
-				</h:selectOneMenu>
+				<div>
+				Categoria:	
+						<h:selectOneMenu style="width: 40%; " value="#{tutoController.categoriaNome}">
+	   						<f:selectItems value="#{categoriaController.inizializzaCategorie()}" var="categoria" itemValue="#{categoria}" />
+						</h:selectOneMenu>
 				</div>
 				<br/><br/>
 				<div>
-					<h:commandButton value="Invia tuto"  action="${tutoController.creaTuto2()}"/>
+					<h:commandButton value="Invia tuto"  action="${tutoController.creaTuto()}"/>
 				</div>		
 				</h:form>
 			</f:view>
-		</div>
-		<ul class="bg-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
 	</div>
 </body>
 </html>

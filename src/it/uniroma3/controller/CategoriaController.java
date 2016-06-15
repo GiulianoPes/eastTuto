@@ -36,10 +36,15 @@ public class CategoriaController {
 		return this.categoria; 
 	}
 	
-	public String initCategorie(){
+	/*public String initCategorie(){
 		this.categorie = categoriaFacade.findAll();
 		System.out.println(this.categorie.toString());
 		return "compileTuto.xhtml";
+	}*/
+	public void initCategorie(){
+		this.categorie = categoriaFacade.findAll();
+		System.out.println(this.categorie.toString());
+		//return "compileTuto.xhtml";
 	}
 	
 	public void set8Categorie(){

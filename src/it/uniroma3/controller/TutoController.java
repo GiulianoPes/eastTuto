@@ -45,6 +45,8 @@ public class TutoController{
 	public String creaTuto() {
 		System.out.println(" - SONO ENTRATO NEL CREA TUTO - ");
 		System.out.println("---------------------"+categoriaNome);
+		System.out.println("---------------------"+nome);
+		System.out.println("---------------------"+descrizione);
 		this.dataCreazione = new Date(System.currentTimeMillis());
 		
 		this.categoria = categoriaFacade.findByName(categoriaNome);
@@ -68,6 +70,8 @@ public class TutoController{
 	public String creaTuto2() {
 		System.out.println(" - SONO ENTRATO NEL CREA TUTO - ");
 		System.out.println("---------------------"+categoriaNome);
+		System.out.println("---------------------"+nome);
+		System.out.println("---------------------"+descrizione);
 	/*	this.dataCreazione = new Date(System.currentTimeMillis());
 		
 		this.categoria = categoriaFacade.findByName(categoriaNome);
