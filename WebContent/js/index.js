@@ -24,7 +24,7 @@ $(document).ready(function(){
 	var updateHashPage = function(hash) {
 		//alert("updateHASH");
 		Hash = window.location.hash;
-		if(hash.substring(1,5)=="user"){
+		if(hash.substring(1,5)=="user") {
 			userHash = hash.substring(6,hash.size);
 			//alert("updateHash - User: "+userHash);
 			$.ajax({
@@ -35,7 +35,7 @@ $(document).ready(function(){
 					$("#container").html(result);
 				}
 			});
-		}else if(hash.substring(1,5)=="page"){
+		} else if(hash.substring(1,5)=="page") {
 			pageHash = hash.substring(6,hash.size);
 			//alert("updateHash - page: "+pageHash);
 			pageHash +=".xhtml";
@@ -46,7 +46,7 @@ $(document).ready(function(){
 					$("#container").html(result);
 				}
 			});
-		}else if(hash.substring(1,5)=="tuto"){
+		} else if(hash.substring(1,5)=="tuto") {
 			tutoHash = hash.substring(6,hash.size);
 			//alert("updateHash - tuto: "+tutoHash);
 			$.ajax({
@@ -57,7 +57,17 @@ $(document).ready(function(){
 					$("#container").html(result);
 				}
 			});
-		}else{
+		} else if(hash.substring(1,5)=="edit") { 
+			tutoHash = hash.substring(6, hash.size);
+			$.ajax({
+				url: 'faces/editTuto.xhtml', 
+				type: 'post', 
+				data: 'tutoId='+tutoHash, 
+				success: function(result) {
+					$("body").html(result);
+				}
+			});
+		} else {
 			window.location = "/easyTuto/";
 		}
 	}

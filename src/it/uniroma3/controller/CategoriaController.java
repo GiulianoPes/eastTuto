@@ -32,14 +32,12 @@ public class CategoriaController {
 		return "compileTuto.jsp";
 	}
 	
-	public String initCategorieModifica() {
+	public List<Categoria> inizializzaCategorie() {
 		this.categorie = categoriaFacade.findAll();
-		System.out.println(this.categorie.toString());
-		return "editTuto.jsp";
+		return this.categorie;
 	}
 	
 	public List<Categoria> getCategorie(){
-		this.categorie = categoriaFacade.findAll();
 		return this.categorie;
 	}
 

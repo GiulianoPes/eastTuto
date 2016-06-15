@@ -28,6 +28,8 @@ public class TutoController{
 	private Categoria categoria;
 	private Utente utente;
 	
+	private int visualizzazioni;
+	
 	private Tuto tuto;
 	private List<Tuto> tutos;
 	
@@ -61,6 +63,43 @@ public class TutoController{
 		return "index.xhtml"; 
 	}
 
+	public String modificaTuto() {
+		System.out.println("SONO ENTRATO IN MODIFCA: ");
+		
+		this.dataCreazione = new Date(System.currentTimeMillis());
+		
+		this.categoria = categoriaFacade.findByName(categoriaNome);
+		
+		//Creao il tuto
+		this.tuto = new Tuto();
+		System.out.println("NOME: " + nome + " - DESCRIZIONE: " + descrizione);
+		this.tuto.setId(id);
+		this.tuto.setNome(nome);
+		this.tuto.setDescrizione(descrizione);
+		this.tuto.setVisualizzazioni(visualizzazioni);
+		this.tuto.setDataCreazione(dataCreazione);
+		this.tuto.setCategoria(this.categoria);
+		
+		//Utente in sessione
+		FacesContext context = FacesContext.getCurrentInstance();
+		this.utente = (Utente) context.getExternalContext().getSessionMap().get("utenteLogged");
+		this.tuto.setUtente(utente);
+		
+		//Lo modifico
+		tutoFacade.update(this.tuto);
+		//this.tuto = tutoFacade.update(this.tuto);
+		System.out.println("Finito di modificare");
+		return "index.xhtml"; 
+	}
+	
+	public String eliminaTuto() {
+		System.out.println("------SONO NELL ELIMINA ------");
+		System.out.println("ID: " + this.tuto);
+		//this.tuto = tutoFacade.findById(id);
+		//tutoFacade.delete(this.tuto);
+		return "index.xhtml";
+	}
+	
 	public double getMoneyFromTutoForUser(Tuto tuto) {
 		double money;
 		// 1000 visualizzazioni = 1 €
@@ -187,5 +226,13 @@ public class TutoController{
 
 	public void setTutoFacade(TutoFacade tutoFacade) {
 		this.tutoFacade = tutoFacade;
+	}
+	
+	public void setVisualizzazioni(int visualizzazioni) {
+		this.visualizzazioni = visualizzazioni;
+	}
+	
+	public int getVisualizzazioni() {
+		return this.visualizzazioni;
 	}
 }

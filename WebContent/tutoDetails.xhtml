@@ -1,29 +1,19 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:a4j="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich">
-	<head>
-	<title>Tuto's details</title>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
 	
-	<script type="text/javascript">
-		/*
-		$(document).ready(function () {
-			$.ajax({
-				url: 'faces/profilePage.xhtml', 
-				type: 'post', 
-				data:'tuto='+${currentTuto}, 
-				success: function(result) {
-					alert(result);
-				}
-			});
-		});
-		*/
-	</script>
+<head>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/tutoDetails.js"></script>
+	
 </head>
 
 <body>
@@ -33,6 +23,8 @@
 	<ui:param name="utenteProfile" value="${currentTuto.getUtente()}"></ui:param>
 	<ui:param name="money" value="${tutoController.getMoneyFromTutoForUser(currentTuto)}"></ui:param>
 	<ui:param name="visualizzazioni" value="${tutoController.aggiungiVisualizzazione(currentTuto)}"></ui:param>
+	
+	${tutoController.setTuto(currentTuto)}
 	
 	<h1>${currentTuto.nome}</h1>
 	
@@ -46,12 +38,9 @@
 					<c:if test="${(not empty utenteLogged) and (utenteProfile.equals(utenteLogged))}">
 						Guadagno: <b style="font-weight:bold;">${money} €</b>
 						<br></br>
+						<input type="button" id="${tutoId}" class="editTutoButton" value="Modifica"></input>
 						<h:form>
-							<h:commandButton style="height: 30px;" value="Modifica" type="submit" action="#{categoriaController.initCategorieModifica}"/>
-						</h:form>
-						
-						<h:form>
-							<h:commandButton style="height: 30px;" value="Elimina" type="submit" action="#{categoriaController.initCategorieModifica}"/>
+							<h:commandButton value="Elimina" action="#{tutoController.eliminaTuto}"></h:commandButton>
 						</h:form>
 					</c:if>
 				</td>
